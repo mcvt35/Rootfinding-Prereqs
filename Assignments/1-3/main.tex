@@ -4,7 +4,7 @@
 \usepackage[margin=1in]{geometry}
 
 % These packages include nice commands from AMS-LaTeX
-\usepackage{amssymb,amsmath,amsthm}
+\usepackage{amssymb,amsmath,amsthm,graphicx}
 
 
 % Define an environment for exercises.
@@ -28,67 +28,223 @@
 
 \begin{flushright}
 \textsc{Marcelo Leszynski}  \\
-Rootfinding Research Prerequisites \\
-05/10/20
+Rootfinding Research Prerequisites\\
+05/17/20
 \end{flushright}
 
 \begin{center}
 \textsf{Assignment 1.3 } \\
-\textsf{Exercises: 1, 2, 3, 4, 6, 7, 11, 13, 14}
+\textsf{Exercises: 1, 2, 3, 4, 6, 7, 11, 13, 14 }
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{1}
-
+\begin{exercise}{1.3.1}
+    Using row reduction, we can arrive at the system of equations
+    \[
+        \begin{cases}
+            x + 4z -3w = 5\\
+            y - 3x + 2w = -3.
+        \end{cases}
+    \]
+    From here, we let $z = t, w = u$ where $t$ and $u$ are arbitrary parameters, and 
+    get the parametrization 
+    \[
+        \begin{cases}
+            x = 5 - 4t + 3u\\
+            y = -3 + 3t - 2u\\
+            z = t\\
+            w = u.
+        \end{cases}
+    \]
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{2}
-
+\begin{exercise}{1.3.2}
+    Using the trigonometric identity $\cos(2t) = 2\cos^2(t) - 1$, we have that 
+    $x = cos(t)$, $y = \cos(2t) = 2\cos^2(t) - 1$. Substituting $x$ for $\cos(t)$ into $y$
+    yields the parabola $y=2x^2-1$. This parametrization covers the parabola contained 
+    in the square $-1 \leq x, y \leq 1$ since $-1 \leq \cos(\theta) \leq 1$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{3}
-
+\begin{exercise}{1.3.3}
+    This parametrization can be given by $x = t, y = f(t)$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{4}
+\begin{exercise}{1.3.4}
 
+    \bigskip
+    \textbf{(1.3.4a)}
+    We begin by solving $x = \frac{t}{1+t}$ for $t$, which yields $t = \frac{x}{1-x}$. Next,
+    we substitute this value into $y = 1 - \frac{1}{t^2}$ so
+    \[
+        y = 1 - \frac{1}{t^2} = 1 - \frac{(1-x)^2}{x^2} = \frac{2x-1}{x^2}.
+    \]
+    Thus we have that $x^2y = 2x-1$, which implies that the parametrization is contained in
+    $V(x^2y-2x+1)$.
+    
+    \bigskip
+    \textbf{(1.3.4b)}
+    First, note that $(1,1) \in V(x^2y-2x+1)$ and that $1 \neq \frac{t}{1+t}$ for all 
+    $t \in \R$. Thus, the parametrization excludes $(1,1)$. To see all other points are 
+    covered by the parametrization, suppose $(x,y)$ satisfies $x^2y - 2x + 1 = 0$ with 
+    $x \neq 1$. Observe now that $x \neq 0$, since $0 * y - 2 * 0 + 1 = 0$ is impossible. 
+    We therefore set $t = \frac{x}{1-x} \in \R$ and observe that $t \neq 0$ due to our 
+    constraints on $x$. Then $x = \frac{t}{1+t}$ by our definition of $t$ and 
+    \[
+        1 - \frac{1}{t^2} = 1 - \frac{(1 - x)^2}{x^2} = \frac{2x - 1}{x^2} = y.
+    \]
+    Note that the last equality follows from $x^2y - 2x + 1 = 0$. Therefore, $(x,y)$ comes 
+    from the parametrization.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{6}
+\begin{exercise}{1.3.6}
 
+    \bigskip
+    \textbf{(1.3.6a)}
+    The following is a second-dimensional representation of the concept. Note that the only 
+    point not reached by constructing lines this way is the "north pole", since that point 
+    cannot be represented by a line that intersects the sphere at two places using our 
+    current modeling.
+    
+    \includegraphics[width=5cm]{6a.png}
+    
+    \bigskip
+    \textbf{(1.3.6b)}
+    The line from $(0,0,1)$ to $(u,v,0)$ can be parametrized by 
+    $(1-t)(0,0,1) + t(u,v,0) = (tu, tv, 1-t)$. 
+    
+    \bigskip
+    \textbf{(1.3.6c)}
+    Substituing $x = tu, y = tv, z =1 - t$ into $x^2 + y^2 + z^2 - 1 = 0$ yields
+    \[
+        0 = (tu)^2 + (tv)^2 + (1-t)^2 - 1 = (u^2 + v^2 + 1)t^2 - 2t = t((u^2 + v^2 + 1)t - 2).
+    \]
+    Note that, since $t = 0$ corresponds to the point $(0,0,1)$, the other point of 
+    intersection must be given by $t = \frac{2}{u^2+v^2+1}$. Thus we have that 
+    \[
+        x = tu = \frac{2u}{u^2 + v^2 + 1}, y = tv = \frac{2v}{u^2 + v^2 + 1}, z = 1 - t = \frac{u^2 + v^2 - 1}{u^2 + v^2 + 1}.
+    \]
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{7}
-
+\begin{exercise}{1.3.7}
+    Working in $\R^n$ means that the "north pole" is given by $(0,\ldots,0,1)$. Next, we 
+    need to define the line through the north pole and a point $(u_1, \ldots, u_{n-1}, 0)$
+    in the hyperplane $x_n = 0$. This can be defined by 
+    \[
+        (x_1, \ldots, x_n) = (1-t)(0, \ldots, 0, 1) + t(u_1, \ldots, u_{n-1}, 0) = (tu_1, \ldots, tu_{n-1}, 1 - t).
+    \]
+    We can observe that this line meets $x_1^2 + \ldots + x_n^2 - 1 = 0$ where 
+    \[
+        0 = (tu_1)^2 + \ldots + (tu_{n-1}^2) + (1 - t)^2 - 1 = (u_1^2 + \ldots + u_{n-1}^2 + 1)t^2 - 2t = t((u_1^2 + \ldots + u_{n-1}^2 + 1)t - 2).
+    \]
+    We already know that $t = 0$ is the north pole, so the other point of intersection 
+    must be given by 
+    \[
+        t = \frac{2}{u_1^2 + \ldots + u_{n - 1}^2 + 1}
+    \]
+    which gives the parametrization
+    \[
+        x_i = tu_i = \frac{2u_i}{u_1^2 + \ldots + u_{n - 1}^2 + 1}
+    \]
+    for all $1 \leq i \leq n$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{11}
+\begin{exercise}{1.3.11}
 
+    \bigskip
+    \textbf{(1.3.11a)}
+    Using 1.3.8, we can change the variables $y \rightarrow x, x \rightarrow z$ to 
+    see that $x^2 = cz^2 - z^3$ is parametrized by $z = c - t^2, x = t(c - t^2)$.
+    
+    \bigskip
+    \textbf{(1.3.11b)}
+    Using $c = y^2$ for some fixed $y$, it follows that $x^2 = y^2z^2 - z^3$ is 
+    parametrized by $z = y^2 - t^2, x = t(y^2 - t^2)$. Finally, we replace $y$ 
+    with a parameter $u$ to get the parametrization $x = t(u^2 - t^2), y = u, z = u^2 - t^2$
+    of $x^2 = y^2z^2 - z^3$, which is the surface $V(x^2 - y^2z^2 + z^3)$ in $\R^3$.
+    
+    \bigskip
+    \textbf{(1.3.11c)}
+    Let $(x,y,z) \in V(x^2 - y^2z^2 + z^3)$, and define $c = y^2$. We then have that 
+    $(x,z) \in V(x^2 - cz^2 - z^3)$. Using (1.3.8c) with the change of variables 
+    $y \rightarrow x, x \rightarrow z$, there exists a $t$ such that 
+    $z = c - t^2, x = t(c - t^2)$. Now, let $u = y$ so that $c = y^2 = u^2$. Then 
+    $x = t(u^2-t^2), y = u, z = u^2 - t^2$ as desired.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{13}
-
+\begin{exercise}{1.3.13}
+    Using method 1, we have that $x = 1 + u - v, y = u + 2v, z = -1 - u + v$ satisfies 
+    $ax + by +cz = d$ if and only if 
+    \[
+        d = a(1 + u - v) + b(u + 2v) + c(-1 - u + v) = (a + b - c)u + (-a + 2b + c)v + (a - c).
+    \]
+    We can rewrite this as the following system of equations
+    \[
+        \begin{cases}
+            a + b - c = 0\\
+            -a + 2b + c = 0\\
+            a - c = d.
+        \end{cases}
+    \]
+    When solved, this system yields $a = c = 1, b = d = 0$, so the equation is $x + z = 0$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{exercise}{1.3.14}
 
-\begin{exercise}{14}
-
+    \bigskip
+    \textbf{(1.3.14a)}
+    Let $P, Q \in \R^2$. Then the line connecting $P$ and $Q$ is parametrized by 
+    \[
+        P + t(Q - P) = (1 - t)P + tQ
+    \]
+    for $t \in \R$. Note that $t = 0$ yields $P$, $t = 1$ yields $Q$, and $0 \leq t \leq 1$
+    yields the line segment joining the two. Thus we have that 
+    \[
+        (1-t)P + tQ \in C
+    \]
+    for $0 \leq t \leq 1$.
+    
+    \bigskip
+    \textbf{(1.3.14b)}
+    We wish to show that, for a convex set $C$ containing $P_1, \ldots, P_n$, we have 
+    $\sum_{i = 1}^nt_iP_i \in C$ when $t_1, \ldots, t_n \geq 0$ and that $\sum_{i = 1}^n t_i = 1$. 
+    We proceed by induction on $n$. The base case of $n = 1$ is true by observation, 
+    so we assume that the assertion is true for $n$. Next, we consider 
+    $P_1, \ldots, P_{n + 1} \in C$ with $t_1, \ldots, t_{n+1} \geq 0$ and 
+    $\sum_{i = 1}^{n + 1} t_i = 1$. This implies that $t_{n + 1} \leq 1$ and yields two 
+    possible cases:
+    
+    \textit{Case 1}: $t_{n+1} = 1$. Then $t_1 = \ldots = t_n = 0$, so 
+    $\sum_{i = 1}^{n+1}t_iP_i = P_{n + 1} \in C$.
+    
+    \textit{Case 2}: $t_{n+1} < 1$. Then $1 - t_{n+1} > 0$ and we fix 
+    $u = \frac{t_i}{1-t_{n+1}}$ for $1 \leq i \leq n$. Then $u_i \geq 0$. Thus 
+    $\sum_{i = 1}^nt_i = 1-t_{n+1}$ implies $\sum_{i = 1}^{nu}u_i = 1$. Using the 
+    inductive hypothesis, $P = \sum_{i = 1}^nu_iP_i \in C$. We can then use (1.3.14a)
+    to show that $C$ contains the point as follows:
+    \begin{align*}
+        (1-t_{n+1})P + t_{n+1}P_{n+1}   &= (1-t_{n+1})\sum_{i = 1}^nu_iP_i + t_{n+1}P_{n+1}\\
+                                        &= (1-t_{n+1})\sum_{i = 1}^n\frac{t_i}{1-t_{n+1}}P_i + t_{n+1}P_{n+1}\\
+                                        &= \sum_{i = 1}^nt_iP_i + t_{n+1}P_{n+1}\\
+                                        &= \sum_{i = 1}^{n+1}t_iP_i
+    \end{align*}
+    as desired.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

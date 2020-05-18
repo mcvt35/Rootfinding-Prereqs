@@ -4,7 +4,7 @@
 \usepackage[margin=1in]{geometry}
 
 % These packages include nice commands from AMS-LaTeX
-\usepackage{amssymb,amsmath,amsthm}
+\usepackage{amssymb,amsmath,amsthm,graphicx}
 
 
 % Define an environment for exercises.
@@ -28,67 +28,214 @@
 
 \begin{flushright}
 \textsc{Marcelo Leszynski}  \\
-Rootfinding Research Prerequisites \\
-05/10/20
+Rootfinding Research Prerequisites\\
+05/17/20
 \end{flushright}
 
 \begin{center}
 \textsf{Assignment 1.2 } \\
-\textsf{Exercises: 1, 2, 3, 4, 5, 6, 8, 9, 15}
+\textsf{Exercises: 1, 2, 3, 4, 5, 6, 8, 9, 15 }
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{1}
+\begin{exercise}{1.2.1}
+
+\bigskip
+\textbf{(1.2.1a)}
+
+\includegraphics[width=5cm]{1a.png}
+
+\bigskip
+\textbf{(1.2.1b)}
+
+\includegraphics[width=5cm]{1b.png}
+
+\bigskip
+\textbf{(1.2.1c)}
+
+\includegraphics[width=5cm]{1c.png}
 
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{exercise}{1.2.2}
 
-\begin{exercise}{2}
-
+\includegraphics[width=5cm]{2.png}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{3}
+\begin{exercise}{1.2.3}
+    The following is $V(x^2+y^2-4)\cap V(xy-2)$, which is the 
+    intersection of the two affine varieties represented by 
+    two different colors. The points of intersection are 
+    approximately $(0.518,1.932),(1.932,0.518),(-0.518,-1.932),
+    (-1.932,-0.518)$.
 
+    \includegraphics[width=5cm]{3a.png}
+
+    These points of intersection are equal to the affine variety 
+    $V(x^2+y^2-4,xy-1)$.
+
+    \includegraphics[width=5cm]{3b.png}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{exercise}{1.2.4}
+
+    \bigskip
+    \textbf{(1.2.4a)}
+    A unit sphere centered at the origin.
+
+    \bigskip
+    \textbf{(1.2.4b)}
+    A cylinder whose cross-sections parallel to the $xy$-plane are unit circles centered at 
+    (0,0) in the $xy$-plane.
+
+    \bigskip
+    \textbf{(1.2.4c)}
+    A point $(-2,1.5,0)$.
+
+    \bigskip
+    \textbf{(1.2.4d)}
+    The union of the $yz$-plane and a parabolic cylinder perpendicular to the $yz$-plane above 
+    $y=z^2$.
+
+    \bigskip
+    \textbf{(1.2.4e)}
+    The union of the $yz$-plane and a twisted cubic given by $V(x^3-z,x^2-y)$.
+
+    \bigskip
+    \textbf{(1.2.4f)}
+    A circle with radius $\frac{\sqrt{3}}{2}$ centered at $(0,0,\frac{1}{2})$ that lies on 
+    the plane $z = \frac{1}{2}$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{4}
-
+\begin{exercise}{1.2.5}
+    The affine variety in $\R^3$ given by $V((x-2)(x^2-y),y(x^2-y),(z+1)(x^2-y))$ can be
+    described as the union $V(x-2,y,z+1)\cup V(x^2-y)$, which is the union of the point 
+    $(2,0,-1)$ and a parabolic cylinder which is perpendicular to the $xy$-plane above the 
+    parabola $y=x^2$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{5}
+\begin{exercise}{1.2.6}
 
+    \bigskip
+    \textbf{(1.2.6a)}
+    \begin{proof}
+        Define $V$ to be the affine variety $V(f_1,\ldots,f_n)$ with each $f_i = x_i - a_i$ for
+        all $1 \leq i \leq n$. Then $V = \{(b_1, \ldots, b_n) | f_i(b_1,\ldots, b_n) = 0, 1\leq i \leq n\}$. Thus we have that $(b_1,\ldots, b_n) \in V$ implies $b_i - a_i = 0$ for $1 \leq i \leq n$. This results in $(b_1, \ldots, b_n) = (a_1, \ldots, a_n)$ so $V = \{(a_1, \ldots, a_n)\}$. 
+
+        Since this works for an arbitrary point $(a_1, \ldots, a_n)$, this argument will 
+        hold for any point. Therefore, a single point $(a_1, \ldots, a_n) \in k^n$ is an affine
+        variety.
+    \end{proof}
+
+    \bigskip
+    \textbf{(1.2.6b)}
+    \begin{proof}
+        Let $S$ be a finite subset of $k^n$ with $r$ points such that $S = \{p_1, \ldots, p_r\}$, $p_i \in k^n$ for $1 \leq i \leq r$. 
+
+        By (1.2.6a), we have that each set of one point $\{p_i\}$ is an affine variety $V_i$. 
+        Lemma 2 indicates that finite unions of affine varieties are also affine varieties, so
+        taking the union of finitely many $p_i$ yields
+        \[
+            V = \bigcup_{i=1}^r V_i = \bigcup_{i=1}^r \{p_i\} = S.
+        \]
+
+        Since $S$ is arbitrary, we conclude that every finite subset $S$ of a field $k^n$ is an
+        affine variety.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{exercise}{1.2.8}
+    \begin{proof}
+        Let $f(x,y) \in \R[x,y]$ vanish on $X = \{(x,x) \in \R^2 | x \neq 1\}$. Then 
+        $g(t) = f(t,t) \in \R[t]$ vanishes at all points such that $t = x \neq 1$. This 
+        implies that $g(t)$ has infinitely many roots, so $g(t)$ must therefore be the 
+        zero polynomial. Note, however, that if $g(t) = 0$ is the zero polynomial, then 
+        $g(1) = f(1,1) = 0$. Thus, we conclude that $X$ is not an affine variety.
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{6}
-
+\begin{exercise}{1.2.9}
+    \begin{proof}
+        Assume, by way of contradiction, that $R = \{(x,y) \in \R^2 | y > 0\}$ is a 
+        variety. Then $R = V(f_1,\ldots f_n)$ where each $f_i$ is a polynomial in $\R[x,y]$.
+        We consider $f_1(x,y)$ and let $y = y_0 > 0$. Note that 
+        \[
+            f_1(x, y_0) = \sum_{i=0}^N g_i(y_0)x^i
+        \]
+        vanishes at all $x \in \R$. This means that $g_i(y_0) = 0$ is the zero polynomial 
+        for all $i$. This holds for all $y_0 > 0$. Thus, $f_1$ is the zero polynomial. This 
+        can be applied to all $f_i$ so $f_i = 0$ is the zero polynomial for all $i$. 
+        Now $R = V(0, \ldots 0) = \R^2$, and we arrive at a contradiction. Therefore
+        $R$ is not an affine variety.
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{exercise}{8}
+\begin{exercise}{1.2.15}
 
-\end{exercise}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{exercise}{9}
-
-\end{exercise}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{exercise}{15}
-
+    \bigskip
+    \textbf{(1.2.15a)}
+    \begin{proof}
+        The base cases have been shown for both unions and intersections of two affine varieties. Thus, we can rewrite finite intersections and unions as follows:
+        $V_1 \cup \ldots \cup V_m = (V_1 \cup \ldots \cup V_{m-1}) \cup V_m$ and 
+        $V_1 \cap \ldots \cap V_m = (V_1 \cap \ldots \cap V_{m-1}) \cap V_m$, so 
+        our result follows from induction on $m$.
+    \end{proof}
+    
+    \bigskip
+    \textbf{(1.2.15b)}
+    \begin{proof}
+        Consider the affine variety $V_i = \{i\} \subseteq \R$. Note that 
+        $\bigcup_{i = 1}^\infty = \N$. Note that this set is infinite, but 
+        not equal to $\R$, so it is not an affine variety.
+    \end{proof}
+    
+    \bigskip
+    \textbf{(1.2.15c)}
+    \begin{proof}
+        Define $V = \R, W = \{0\}$. Then $V\backslash W = \R - \{0\}$ which is an infinite 
+        set not equal to $\R$. Thus, similarly to (1.2.15b), $V\backslash W$ is not an affine 
+        variety.
+    \end{proof}
+    
+    \newpage
+    \textbf{(1.2.15d)}
+    \begin{proof}
+        Let $V = V(f_1,\ldots, f_s)$ with $f_i \in k[x_1, \ldots, x_n]$ and let 
+        $W = V(g_1, \ldots, g_t)$ with $g_j \in k[x_1, \ldots, x_m]$. Furthermore, 
+        define $y_1, \ldots, y_m$ to be new variables and $h_j = g_j(y_1,\ldots, y_m)$.
+        
+        We wish to show that 
+        \[
+            V \times W = V(f_1, \ldots, f_s, h_1, \ldots, h_t) \subseteq k^n \times k^m
+        \]
+        
+        Note that, if $f(a,b) \in V \times W$, then $f_i(a,b) = f_i(a) = 0$ and 
+        $h_j(a,b) = h_j(b) = 0$ since $a \in V, b \in W$. Thus $(a,b) \in V(f_1, \ldots, f_s, h_1, \ldots, h_t)$.
+        
+        Conversely, if $(a,b) \in V(f_1, \ldots, f_s, h_1, \ldots, h_t)$, then $f_i(a) = 0$ 
+        for $i = 1, \ldots, s$, and $g_j(b) = 0$ for $j = 1, \ldots, t$. Therefore $a \in V$
+        and $b \in W$.
+        
+        Thus we conclude that the cartesian product of two affine varieties is an affine 
+        variety.
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
