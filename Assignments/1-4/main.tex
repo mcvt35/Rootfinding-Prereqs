@@ -186,7 +186,7 @@ Rootfinding Research Prerequisites\\
         and we have that 
         \begin{align*}
             f   &= a_{00} + \sum_{i,j \neq 0,0}a_{ij}x^iy^j\\
-                &= 0 + (\sum_{i,j, i>0}a_{ij}x^{i-1}y^j)x + (\sum_{j>0}a_{0j}y^{j-1})y \in \langle x,y \rangle.
+                &= 0 + \biggr(\sum_{i,j, i>0}a_{ij}x^{i-1}y^j \biggr)x + \biggr(\sum_{j>0}a_{0j}y^{j-1}\biggr)y \in \langle x,y \rangle.
         \end{align*}
         Thus $I(V(x^n,y^m)) = I(\{(0,0)\}) = \langle x,y \rangle$.
     \end{proof}
@@ -198,10 +198,36 @@ Rootfinding Research Prerequisites\\
 
     \bigskip
     \textbf{(1.4.9a):}
+    By definition, we have that $f(x,y,z) = y^2-xz \in I(V)$ if and only if 
+    $f=0$ on $V$. Let $(a,b,c)$ be an arbitrary point contained in $V$. By 
+    the book's given parameterization, we have that $(a,b,c) = (t,t^2,t^3)$ 
+    for some $t \in \R$. Hence $b^2-ac = (t^2)^2-t(t^3)=t^4-t^4 = 0$. Since 
+    $(a,b,c)$ is arbitrary, we now have that $y^2-xz = 0$ on $V$ so $y^2-xz \in I(V)$.
 
     \bigskip
     \textbf{(1.4.9b):}
-
+    We wish to show that $y^2-xz \in \langle y-x^2,z-x^3 \rangle$, or in other words,
+    $y^2-xz = h_1(y-x^2) + h_2(z-x^3)$ where $h_1,h_2 \in \R[x,y,z]$. We begin 
+    by expanding the terms of $y^2-xz$ as follows:
+    \begin{align*}
+        y^2 = x^0y^2z^0 &= x^0(x^2+(y-x^2))^2(x^3+(z-x^3))^0\\
+                        &= (x^4+2x^2(y-x^2)+y^2-2x^2y+x^4)\\
+                        &= (2x^2+(y-x^2))(y-x^2)+x^4\\
+                        &= (y+x^2)(y-x^2)+x^4
+    \end{align*}
+    and 
+    \begin{align*}
+        xz = x^1y^0z^1  &= x(x^2+(y-x^2))^0(x^3+(z-x^3))^1\\
+                        &= x(z-x^3)+x^4.
+    \end{align*}
+    Thus 
+    \begin{align*}
+        y^2-xz  &= ((y+x^2)(y-x^2)+x^4)-(x(z-x^3)+x^4)\\
+                &= (y+x^2)(y-x^2)+(-x)(z-x^3) +x^4-x^4\\
+                &= h_1 \cdot (y-x^2) + h_2 \cdot(z-x^3)
+    \end{align*}
+    where $h_1 = y+x^2$ and $h_2 = -x$. Therefore $y^2-xz \in \langle y-x^2,z-x^3 \rangle$ 
+    as desired.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
