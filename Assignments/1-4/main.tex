@@ -1,0 +1,214 @@
+\documentclass[12pt,oneside]{article}
+
+% This package simply sets the margins to be 1 inch.
+\usepackage[margin=1in]{geometry}
+
+% These packages include nice commands from AMS-LaTeX
+\usepackage{amssymb,amsmath,amsthm,graphicx}
+
+
+% Define an environment for exercises.
+\newenvironment{exercise}[1]{\vspace{.1in}\noindent\textbf{Exercise #1 \hspace{.05em}}}{}
+
+% define shortcut commands for commonly used symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% If you use Overleaf, the name of the project will be determined by
+% what you enter as the document title.
+\title{Math Homework Template}
+
+\begin{flushright}
+\textsc{Marcelo Leszynski}  \\
+Rootfinding Research Prerequisites\\
+07/13/20
+\end{flushright}
+
+\begin{center}
+\textsf{Assignment 1.4 } \\
+\textsf{Exercises: 2, 3, 6, 7, 9 }
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{1.4.2}
+
+    \begin{proof}
+        Let $I \subseteq k[x_1,\ldots,x_n]$ be an ideal, and let $f_1,
+        \ldots, f_s \in k[x_1,\ldots,x_n]$. We wish to show that 
+        \[
+            f_1,\ldots,f_s \in I \Leftrightarrow \langle f_1,\ldots,f_s\rangle \subseteq I.
+        \]
+
+        \bigskip
+        \textbf{($\Rightarrow$):} Assume that $f_1,\ldots,f_s \in I$ and let 
+        $f \in \langle f_1, \ldots, f_s \rangle$ be arbitrary. Note that 
+        $f = h_1f_1 + \ldots + h_sf_s$ for some $h_1,\ldots,h_s \in k[x_1,\ldots,x_n]$.
+        Since $I$ is an ideal, we know by definition that each $h_if_i \in I$ and 
+        that $h_1f_1 + \ldots + h_sf_s \in I$. Therefore, $\langle f_1, \ldots f_s \rangle \subseteq I$.
+
+        \bigskip
+        \textbf{($\Leftarrow$):} Assume that $\langle f_1,\ldots,f_s\rangle \subseteq I$.
+        Note that $f_1 \in \langle f_1,\ldots,f_s \rangle$ since 
+        \[
+            f_1 = 1 \cdot f_1 + 0 \cdot f_2 + \ldots + 0 \cdot f_s \in \langle f_1, \ldots, f_s \rangle.
+        \]
+        Thus $f_1 \in \langle f_1, \cdots, f_s \rangle \subseteq I$. This conclusion
+        can be generalized for any polynomial $f_i$ in the basis $\langle f_1,\ldots,f_s \rangle$.
+        Therefore, $f_1,\ldots,f_s \in I$.
+    \end{proof}
+
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{1.4.3}
+
+    \bigskip
+    \textbf{(1.4.3a):} ($\subseteq$): Note that $x \in \langle x+y, x-y \rangle$ since
+    $x = \frac{1}{2} \cdot (x + y) + \frac{1}{2} \cdot (x-y)$. Similarly, 
+    $y \in \langle x+y, x-y \rangle$ since 
+    $y = \frac{1}{2} \cdot (x + y) + \frac{-1}{2} \cdot (x-y)$. Thus, by 
+    Exercise 1.4.2, 
+    \[
+        x,y \in \langle x+y, x-y \rangle \Rightarrow \langle x,y \rangle \subseteq \langle x+y, x-y \rangle.
+    \] 
+
+    \bigskip
+    ($\supseteq$): Note that $x+y \in \langle x,y \rangle$ since 
+    $x+y = 1 \cdot x+1 \cdot y$. Similarly, $x-y \in \langle x,y \rangle$ since 
+    $x-y = 1 \cdot x-1 \cdot y$. Thus, by Exercise 1.4.2,
+    \[
+        x+y,x-y \in \langle x,y \rangle \Rightarrow \langle x+y,x-y \rangle \subseteq \langle x,y \rangle.
+    \]
+    Therefore $\langle x+y,x-y \rangle = \langle x,y \rangle$ in $\Q[x,y]$.
+
+    \bigskip
+    \textbf{(1.4.3b):} ($\subseteq$): Note that 
+    \begin{align*}
+        x+xy &= 1 \cdot x + x \cdot y \in \langle x,y \rangle \\
+        y+xy &= y \cdot x + 1 \cdot y \in \langle x,y \rangle \\
+        x^2 &= x \cdot x + 0 \cdot y \in \langle x,y \rangle \\
+        y^2 &= 0 \cdot x + y \cdot y \in \langle x,y \rangle.
+    \end{align*}
+    Thus, by Exercise 1.4.2, $\langle x+xy, y+xy,x^2,y^2 \rangle \subseteq \langle x,y \rangle$.
+
+    \bigskip
+    ($\supseteq$): Note that
+    \begin{align*}
+        x &= (1-y) \cdot (x+xy) + y \cdot (y+xy) + 0 \cdot x^2 + (-1) \cdot y^2 \in \langle x+xy,y+xy,x^2,y^2 \rangle \\
+        y &= x \cdot (x+xy) + (1-x) \cdot (y+xy) + (-1) \cdot x^2 + 0 \cdot y^2 \in \langle x+xy,y+xy,x^2,y^2 \rangle.
+    \end{align*}
+    Thus, by Exercise 1.4.2, $\langle x,y \rangle \subseteq \langle x+xy, y+xy,x^2,y^2 \rangle$.
+    Therefore, $\langle x+xy, y+xy,x^2,y^2 \rangle = \langle x,y \rangle$ in $\Q[x,y]$.
+
+    \bigskip
+    \textbf{(1.4.3c):} ($\subseteq$): Note that 
+    \begin{align*}
+        2x^2+3y^2-11 &= 2 \cdot (x^2-4) + 3 \cdot (y^2-1) \in \langle x^2-4,y^2-1 \rangle \\
+        x^2-y^2-3    &= 1 \cdot (x^2-4) + (-1) \cdot (y^2-1) \in \langle x^2-4,y^2-1 \rangle.
+    \end{align*}
+    Thus, by Exercise 1.4.2, $\langle 2x^2+3y^2-11, x^2-y^2-3 \rangle \subseteq \langle x^2-4,y^2-1 \rangle$.
+
+    \bigskip 
+    ($\supseteq$): Note that 
+    \begin{align*}
+        x^2-4 &= \frac{1}{5} \cdot 2x^2+3y^2-11 + \frac{3}{5} \cdot x^2-y^2-3 \in \langle 2x^2+3y^2-11,x^2-y^2-3 \rangle \\
+        y^2-1 &= \frac{1}{5} \cdot 2x^2+3y^2-11 + \frac{-2}{5} \cdot x^2-y^2-3 \in \langle 2x^2+3y^2-11,x^2-y^2-3 \rangle.
+    \end{align*}
+    Thus, by Exercise 1.4.2, $\langle x^2-4,y^2-1 \rangle \subseteq \langle 2x^2+3y^2-11,x^2-y^2-3 \rangle$.
+    Therefore $\langle 2x^2+3y^2-11,x^2-y^2-3 \rangle = \langle x^2-4,y^2-1 \rangle$ in $\Q[x,y]$.
+
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{1.4.6}
+
+    \bigskip
+    \textbf{(1.4.6a):} Note that $x^n \in \langle x \rangle$ for all $n \in \N$.
+    Each term in the set of $x^n$s described this way is linearly independent from 
+    the others as long as we are multiplying by elements of $k$, so $\langle x \rangle$ 
+    has infinite dimension. Thus, any vector space basis of $I$ over $k$ is infinite.
+
+    \bigskip
+    \textbf{(1.4.6b):} $0 = y \cdot x + (-x) \cdot y$.
+
+    \bigskip
+    \textbf{(1.4.6c):} $0 = f_j \cdot f_i + (-f_i) \cdot f_j$.
+
+    \bigskip
+    \textbf{(1.4.6d):} $f = x^2+xy+y^2 = (x+y) \cdot x + y \cdot y = x \cdot x + (x+y) \cdot y$.
+
+    \bigskip
+    \textbf{(1.4.6e):} We wish to show that $x$ and $x+x^2,x^2$ are minimal 
+    bases for the same ideal of $k[x]$. 
+    \begin{proof}
+        We begin by showing that $x$ and $x+x^2,x^2$ are bases for the same ideal.
+        Note that 
+        \begin{align*}
+            x &= 1 \cdot (x+x^2) + (-1) \cdot x^2 \in \langle x+x^2,x^2 \rangle \\
+            x^2 &= x \cdot x \in \langle x \rangle \\
+            x+x^2 &= x + x \cdot x \in \langle x \rangle 
+        \end{align*}
+        Thus, by Exercise 1.4.2 we can conclude that $\langle x \rangle = \langle x+x^2,x^2 \rangle$.
+
+        Next, we show that $x$ and $x+x^2,x^2$ are both minimal bases. Note that 
+        $x$ is a minimal basis because the only proper subset is the empty set, 
+        which cannot describe the same ideal of $k[x]$. We can see that $x+x^2,x^2$ is 
+        a minimal basis by noting that $x \not \in \langle x^2 \rangle$ since 
+        $x^2$ does not divide $x$. Similarly, we can conclude that $x \not \in \langle x+x^2 \rangle$.
+        Hence $x+x^2,x^2$ is a minimal basis. 
+
+        We therefore conclude that the bases $x$ and $x+x^2,x^2$ both describe 
+        the same ideal and are both minimal.
+    \end{proof}
+
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{1.4.7}
+    \begin{proof}
+        Note that, since $m,n$ are both positive, $V(x^n,y^m) = \{(0,0)\}$. All 
+        that remains is to show that $I(\{(0,0)\}) = \langle x,y \rangle$. To 
+        prove one direction, we see that any polynomial in the form $A(x,y)x +B(x,y)y$
+        vanishes at the origin. For the other direction, suppose that 
+        $f = \sum_{ij}a_{ij}x^iy^j \in I(\{(0,0)\})$. Then $a_{00} = f(0,0) = 0$ 
+        and we have that 
+        \begin{align*}
+            f   &= a_{00} + \sum_{i,j \neq 0,0}a_{ij}x^iy^j\\
+                &= 0 + (\sum_{i,j, i>0}a_{ij}x^{i-1}y^j)x + (\sum_{j>0}a_{0j}y^{j-1})y \in \langle x,y \rangle.
+        \end{align*}
+        Thus $I(V(x^n,y^m)) = I(\{(0,0)\}) = \langle x,y \rangle$.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{1.4.9}
+
+    \bigskip
+    \textbf{(1.4.9a):}
+
+    \bigskip
+    \textbf{(1.4.9b):}
+
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------------
+% Don't change anything below here
+%---------------------------------
+
+
+\end{document}
