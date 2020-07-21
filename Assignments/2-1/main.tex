@@ -40,24 +40,120 @@ Rootfinding Research Prerequisites\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.1.1b}
-
+    Dividing the basis $x^3-x^2+x$ into $x^5-4x+1$ using the division algorithm
+    yields
+    \[
+        x^5-4x+1=(x^2+x)(x^3-x^2+x)+(-x^2-4x+1)
+    \]
+    which has a nonzero remainder term ($-x^2-4x+1$). Therefore, 
+    $f(x) = x^5-4x+1 \not \in I = \langle x^3-x^2+x \rangle$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.1.2b}
-
+    We begin by constructing the coefficient matrix (in this case, it 
+    is not an augmented matrix since each equation is set to zero). We
+    then row reduce the coefficient matrix.
+    \[
+        \begin{bmatrix}
+            1 & 1 & -1 & -1\\
+            1 & -1 & 1 & 0
+        \end{bmatrix}
+        \rightarrow
+        \begin{bmatrix}
+            1 & 0 & 0 & -\frac{1}{2}\\
+            0 & 1 & -1 & -\frac{1}{2}
+        \end{bmatrix}
+    \]
+    The resulting matrix shows that $x_3, x_4$ are free variables. We will 
+    parameterize them by setting $x_3 = t, x_4 = u$ which yields
+    \begin{align*}
+        x_1 &= \frac{1}{2}u\\
+        x_2 &= t + \frac{1}{2}u\\
+        x_3 &= t\\
+        x_4 &= u.
+    \end{align*}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.1.3b}
-
+    We begin by rewriting the given parameterization in the following form:
+    \begin{align*}
+        2t-5u-x_1   &=0\\
+        t+2u-x_2    &=0\\
+        -t+u-x_3    &=0\\
+        t+3u-x_4    &=0
+    \end{align*}
+    Using this parameterization, we construct the following coefficient 
+    matrix and row reduce it.
+    \[
+        \begin{bmatrix}
+            2&-5&-1&0&0&0\\
+            1&2&0&-1&0&0\\
+            -1&1&0&0&-1&0\\
+            1&3&0&0&0&-1
+        \end{bmatrix}
+        \rightarrow
+        \begin{bmatrix}
+            1&0&0&0&\frac{3}{4}&-\frac{1}{4}\\
+            0&1&0&0&-\frac{1}{4}&-\frac{1}{4}\\
+            0&0&1&0&\frac{11}{4}&\frac{3}{4}\\
+            0&0&0&1&\frac{1}{4}&-\frac{3}{4}
+        \end{bmatrix}
+    \]
+    This results in the equations which define the affine variety:
+    \begin{align*}
+        x_1 + \frac{11}{4}x_3+\frac{3}{4}x_4    &=0\\
+        x_2+\frac{1}{4}x_3-\frac{3}{4}x_4       &=0
+    \end{align*}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.1.4}
+
+    \bigskip
+    \textbf{(2.1.4a):}
+    To show that $I$ is an ideal in the ring $R$, we first observe that 
+    $R$ contains the zero polynomial, which implies that $I$ does as well 
+    in the from
+    \[
+        0 = 0 \cdot x_1 + 0 \cdot x_2 + \ldots
+    \]
+    It is also worth noting that $I$ is nonempty since it contains $x_1, x_2,$ etc.
+
+    Next, let $p,q \in I$ be arbitrary polynomials in $I$. This implies that
+    \begin{align*}
+        p   &= f_1 \cdot x_1 + f_2 \cdot x_2 + \ldots + 0 \cdot x_i + 0 \cdot x_{i+1} + \ldots\\
+        q   &= g_1 \cdot x_1 + g_2 \cdot x_2 + \ldots + 0 \cdot x_i + 0 \cdot x_{i+1} + \ldots\\
+        p+q &= f_1 \cdot x_1 + g_1 \cdot x_1 + f_2 \cdot x_2 + g_2 \cdot x_2 + \ldots + 0 \cdot x_i + 0 \cdot x_{i+1} + \ldots\\
+            &= (f_1 + g_1) \cdot x_1 + (f_2 + g_2) \cdot x_2 + \ldots + 0 \cdot x_i + 0 \cdot x_{i+1} + \ldots
+    \end{align*}
+    which shows that any arbitrary addition of polynomials in $I$ is also 
+    contained in $I$.
+
+    Finally, let $t$ be a polynomial in $I$ and let $r \in R$. Then 
+    $rt$ is given by 
+    \begin{align*}
+        rt  &= r(f_1 \cdot x_1 + f_2 \cdot x_2 + \ldots + 0 \cdot x_i + 0 \cdot x_{i+1} + \ldots\\
+            &= (rf_1) \cdot x_1 + (rf_2) \cdot x_2 + \ldots + 0 \cdot x_i + 0 \cdot x_{i+1} + \ldots\\
+            &= g_1 \cdot x_1 + g_2 \cdot x_2 + \ldots + 0 \cdot x_i + 0 \cdot x_{i+1} + \ldots
+    \end{align*}
+    with $g_i = rf_i \in R$. Therefore, $I$ is an ideal in the ring $R$.
+
+    \bigskip
+    \textbf{(2.1.4b):}
+    Suppose, by way of contradiction, that $I$ has a finite generating set 
+    $I = \langle g_1,\ldots,g_n \rangle$. Since each $g_i$ contains a finite 
+    number of variables, there exists some variable $x_\emptyset$ which does 
+    not appear in any $g_i$. This implies that the constant term associated with
+    the $x_\emptyset$ variable in each $g_i$ is equal to zero. This follows for 
+    all nonzero $f \in \langle g_1, \ldots, g_n \rangle$. This would mean that 
+    $x_\emptyset \not \in \langle g_1, \ldots, g_n \rangle = I = \langle x_1, x_2, \ldots \rangle$.
+    This is a contradiction, so there exists no finite generating set for the 
+    given ideal.
 
 \end{exercise}
 
@@ -65,6 +161,119 @@ Rootfinding Research Prerequisites\\
 
 \begin{exercise}{2.1.5}
 
+    \bigskip
+    \textbf{(2.1.5a):}
+    \begin{proof}
+        We proceed with induction on $m \geq 0$. 
+
+        \underline{Base Case}: When $m=0$, the only polynomial of the given 
+        form with degree $\leq 0$ is $x^0y^0=1$ and $\frac{1}{2}(x+1)(0+2) = 1$, 
+        so the base case holds.
+
+        \underline{Inductive Hypothesis}: The number of distinct monomials $x^ay^b$ 
+        of total degree $leq n$ in $k[x,y]$ is equal to $(m+1)(m+2)/2$ when $n\geq 0$.
+        
+        \underline{Inductive Step}: Notice that the set of all polynomials of 
+        degree $\leq n+1$ can be described as 
+        \[
+            \{x^ay^b | a+b \leq n+1\} = \{x^ay^b | a+b \leq n\} \cup \{x^{m+1}, \ldots, y^{m+1}\}
+        \]
+        Note that this union is disjoint, and that the set on the right hand side 
+        of the union consists of $n+2$ polynomials as described in our inductive hypothesis.
+        This allows us to conclude that the number of monomials of total degree 
+        $\leq n+1$ is given by
+        \begin{align*}
+            \frac{1}{2}(m+1)(m+2) + (m+2)   &= \frac{1}{2}(2(\frac{1}{2}(m+1)(m+2)+(m+2)))\\
+                                            &= \frac{1}{2}((m+1)(m+2) + 2(m+2))\\
+                                            &= \frac{1}{2}(m^2+5m+6)\\
+                                            &= \frac{1}{2}(m+2)(m+3)
+        \end{align*}
+        as needed. 
+    \end{proof}
+    
+    \bigskip
+    \textbf{(2.1.5b):} Let $f(t), g(t)$ be polynomials of degree $\leq n$ in $t$. 
+    Suppose, by way of contradiction, that for $m$ large enough, the "monomials"
+    $[f(t)]^a[g(t)]^b$ with $a+b \leq m$ are linearly independent. Then we have 
+    that $[f(t)]^a[g(t)]^b$ has degree $\leq n(a+b) \leq nm$. This implies that 
+    $[f(t)]^a[g(t)]^b$ lies in the vector space of polynomials of degree $leq nm$ in $t$,
+    which is of dimension $nm+1$. Exercise 2.1.5a shows that there are $\frac{1}{2}(m+1)(m+2)$ 
+    choices for exponents $a$ and $b$ with $a+b \leq m$. Note that, as $m$ increases, 
+    we have that 
+    \[
+        \frac{1}{2}(m+1)(m+2) > nm+1.    
+    \]
+    This is a contradiction, because this implies that $[f(t)]^a[g(t)]^b$ are 
+    linearly dependent. This is because $[f(t)]^a[g(t)]^b$ is in a vector space 
+    of dimension $nm+1$. We therefore conclude that the given "monomials" are 
+    linearly dependent with a large enough $m$ value. 
+
+    \bigskip
+    \textbf{(2.1.5c):} (Note: understanding this problem required lots of help from 
+    the internet. Much of what was being asked went over my head without additional explanation). 
+    Let the nontrivial relation described in Exercise 2.1.5b be given as 
+    \[
+        \sum_{a+b\leq m}c_{a,b}f(t)^ag(t)^b=0.
+    \]
+    We then have that $F = \sum_{a+b\leq m}c_{a,b}x^ay^b \in k[x,y]$ is a nonzero 
+    polynomial. Furthermore, we have that $F(f(t),g(t)) = 0$ is the zero polynomial in $t$.
+    It follows that for all $t \in k, (f(t),g(t)) \in V(F)$. Therefore, $V(F)$ contains 
+    the curve in $k^2$ parameterized by $t \to (f(t),g(t))$.
+
+    \bigskip
+    \textbf{(2.1.5d):}
+    \begin{proof}
+        We begin by proving a more generalized version of the proposition in 
+        Exercise 2.1.5a by induction. We will show that the number of monomials 
+        in the form $x^ay^bz^c$ of total degree $\leq m$ is given by 
+        $\frac{1}{6}(m+1)(m+2)(m+3)$, i.e., the binomial coefficient $\binom{m+3}{3}$.
+
+        \underline{Base Case}: When $m = 0$, the only possible polynomial in the given 
+        form of degree $leq m$ is $x^0y^0z^0 = 1$. Note that $\frac{1}{6}(0+1)(0+2)(0+3) = 1$.
+        Therefore, the base case holds.
+
+        \underline{Inductive Hypothesis}: The number of distinct monomials $x^ay^bz^c$ 
+        of total degree $leq n$ in $k[x,y,z]$ is equal to $\frac{1}{6}(m+1)(m+2)(m+3)$ when $n\geq 0$.
+
+        \underline{Inductive Step}: Notice that the set of all polynomials of the 
+        given form with degree $leq n+1$ can be described as
+        \[
+            \{x^ay^bc^z | a+b+c \leq n+1\} = \{x^ay^bz^c | a+b+c \leq n\} \cup \{x^ay^bz^c | a+b+c = m+1\}
+        \]
+        It is worth noting that the two sets on the right hand side are disjoint, and 
+        the sum of their cardinalities is equal to the cardinality of the set on the left hand side.
+        Using our inductive hypothesis together with Exercise 2.1.5a, we can see that 
+        the number of monomials of total degree $\leq n+1$ is given by 
+        \[
+            \frac{1}{6}(m+1)(m+2)(m+3) + \frac{1}{2}(m+2)(m+3) = \frac{1}{6}(m+2)(m+3)((m+1)+3) = \frac{1}{6}(m+2)(m+3)(m+4).    
+        \]
+
+        For the next part of our proof, we let $f(t,u),g(t,u),h(t,u)$ be 
+        polynomials of total degree $\leq d$. For a given integer $m$ such 
+        that $a+b+c \leq m$, we see that the polynomials $[f(t,u)]^a[g(t,u)]^b[h(t,u)]^z$ 
+        have a total degree of $d(a+b+c) \leq dm$. We concluded above 
+        that there are only  $\frac{1}{6}(m+1)(m+2)(m+3)$ choices for $a,b,c$ with 
+        $a+b+c \leq m$. Thus, these polynomials are contained in a vector space of dimension
+        $\frac{1}{2}(dm+1)(dm+2)$ as shown in Exercise 2.1.5a. Therefore, these 
+        polynomials must be linearly dependent when $m$ is chosen to be sufficiently 
+        large such that 
+        \[
+            \frac{1}{6}(m+1)(m+2)(m+3) > \frac{1}{2}(dm+1)(dm+2).
+        \]
+
+        We now write this nontrivial dependence as 
+        \[
+            \sum_{a+b+c\leq m}c_{a,b,c}x^ay^bz^c \in k[x,y,z]    
+        \]
+        and note that, when this dependece is equal to zero, then there is 
+        a nonzero polynomial 
+        \[
+            F = \sum_{a+b+c\leq m}c_{a,b,c}x^ay^bz^c \in k[x,y,z]    
+        \]
+        that has the property that $F(f(t,u),g(t,u),h(t,u)) = 0 \in k[t,u]$.
+        This implies that $V(F)$ contains the surface in $k^3$ parameterized 
+        by $(t,u) \to (f(t,u),g(t,u),h(t,u))$.
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
