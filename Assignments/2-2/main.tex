@@ -6,7 +6,6 @@
 % These packages include nice commands from AMS-LaTeX
 \usepackage{amssymb,amsmath,amsthm,graphicx}
 
-
 % Define an environment for exercises.
 \newenvironment{exercise}[1]{\vspace{.1in}\noindent\textbf{Exercise #1 \hspace{.05em}}}{}
 
@@ -16,7 +15,6 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\N}{\mathbb{N}}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -41,36 +39,160 @@ Rootfinding Research Prerequisites\\
 
 \begin{exercise}{2.2.1}
 
+    \bigskip
+    \textbf{(2.2.1a):}
+    \begin{align*}
+        f(x,y,z)    &= x^3+x^2+2x+3y-z^2+z && \text{(lex)}\\
+                    &= x^3+x^2-z^2+2x+3y+z && \text{(grlex)}\\
+                    &= x^3+x^2-z^2+2x+3y+z && \text{(grevlex)}\\
+    \end{align*}
+    multideg$(f) = (3,0,0)$. LM$(f) = x^3$. LT$(f) = x^3$.
+
+    \bigskip
+    \textbf{(2.2.1b):}
+    \begin{align*}
+        \text{lex}      &= -3x^5yz^4+2x^2y^8-xy^4+xyz^3 && \text{LM}(f)=x^5yz^4 && \text{LT}(f) = -3x^5yz^4 && \text{multideg}(f)=(5,1,4)\\
+        \text{grlex}    &= -3x^5yz^4+2x^2y^8-xy^4+xyz^3 && \text{LM}(f)=x^5yz^4 && \text{LT}(f) = -3x^5yz^4 && \text{multideg}(f)=(5,1,4)\\
+        \text{grevlex}  &= 2x^2y^8-3x^5yz^4+xyz^3-xy^4  && \text{LM}(f)=x^2y^8  && \text{LT}(f) = 2x^2y^8   && \text{multideg}(f)=(2,8,0).
+    \end{align*}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.2.5}
+    \begin{proof}
+        In order to show that grevlex is a monomial order according to Definition
+        1, we must prove the following conditions: first, that $>_{grevlex}$ is a 
+        linear ordering on $\Z_{\geq 0}^n$, second, that if $\alpha >_{grevlex} \beta$ and 
+        $\gamma \in \Z_{\geq 0}^n$, then $\alpha + \gamma >_{grevlex} \beta + \gamma$, third, 
+        that $>_{grevlex}$ is well-ordering on $\Z_{\geq 0}^n$.
 
+        (i): Let $a,b \in \Z_{\geq 0}^n$ with $a \neq b$. We have three cases. 
+        If $|a|>|b|$, then $a>_{grevlex}b$. Similarly, if $|b|>|a|$, then 
+        $b>_{grevlex}a$. The third case is when $|a|=|b|$. If the rightmost 
+        nonzero entry of $a-b$ is negative, then $a>_{grevlex}b$. If it is 
+        positive, this implies that the rightmost nonzero entry of $b-a$ is 
+        negative, so $b>_{grevlex}a$. Therefore, grevlex is a total order. 
+
+        (ii): Let $a>_{grevlex}b$. We have two cases. If $|a|>|b|$, then 
+        $|a+c|=|a|+|c|>|b|+|c|=|b+c|$, thus $a+c>_{grevlex}b+c$. If $|a|=|b|$, 
+        then the rightmost nonzero entry of $a-b$ is negative by construction. 
+        Note that $(a+c)-(b+c)=a-b$, so it follows that the rightmost nonzero 
+        entry of $(a+c)-(b+c)$ is negative. Thus $a+c>_{grevlex}b+c$.
+
+        (iii): To show that this relation is well-ordering, we must show that 
+        an arbitrary sequence $a(1) >_{grevlex} a(2) >_{grevlex} \ldots$ is finite.
+        Note that, for an arbitrary $|a(i)|$, there exists some $m$ with 
+        $|a(i)|=|a(m)|$ for $i\geq m$. (This occurs because $>$ is well-ordering).
+        This implies that the sequence must be finite since there is a finite number 
+        of $a \in \Z_{\geq 0}^n$ with $|a| = |a(m)|$.
+
+        Therefore, grevlex is a monomial order.
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.2.7}
 
+    \bigskip
+    \textbf{(2.2.7a):}
+    \begin{proof}
+        Assume, by way of contradiction, that $a < 0$. This implies that $a+a = 2a < a$.
+        This allows us to create an infinite decreasing sequence of terms such that 
+        $0>a>2a>3a>\ldots$, which contradicts part (iii) of the definition of monomial orders.
+    \end{proof}
+
+    \bigskip
+    \textbf{(2.2.7b):}
+    \begin{proof}
+        Let $x^a,x^b$ be arbitrary monomials such that $x^a$ divides $x^b$. We 
+        wish to show that $a\leq b$. $x^a$ dividing $x^b$ implies that there 
+        exists a monomial $x^c$ such that $x^b=x^cx^a$. Equating exponents 
+        yields $b=c+a$, which gives $b-a=c \in \Z_{\geq 0}^n$. By our proof 
+        of Exercise 2.2.7a, we can conclude that $b-a\geq0$ so $a\leq b$ as desired.
+
+        A counterexample to show that the converse is not true is the monomials 
+        $x^3y$ and $x^2y^2$ using lex order. Note that $x^3y >_{lex} x^2y^2$ but 
+        $x^2y^2$ does not divide $x^3y$.
+    \end{proof}
+
+    \bigskip
+    \textbf{(2.2.7c):}
+    \begin{proof}
+        Let $a \in \Z_{\geq 0}^n$. We wish to show that $a$ is the smallest 
+        element of $a + \Z_{\geq 0}^n$. Let $b \in \Z_{\geq 0}^n$ be arbitrary. 
+        Then for any $a+b \in a+\Z_{\geq 0}^n$, we have that $x^a$ divides $x^{a+b}$,
+        so by Exercise 2.2.7b, $a+b \geq a$. Since $b$ is arbitrary, we can conclude 
+        that $a$ is the smallest element of the set $a+\Z_{\geq 0}^n$.
+    \end{proof}
+
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.2.8}
-
+    A matrix is in echelon form if all zero rows are below all nonzero rows, and 
+    if the first nonzero entry in a nonzero row is a 1, and is to the right 
+    of the first nonzero entries of the rows above. To incorporate the ordering 
+    given in equation (2) of the text, we define the polynomial $f_i=a_{i1}x_1+\ldots+a_{in}x_n$ 
+    representing a row of a matrix where $a_{ij}$ is the term on the $i$-th row 
+    and $j$-th column of a matrix with $n$ columns. 
+    
+    For all $f_i \neq 0$, LC$(f_i)$
+    corresponds to the first nonzero enntry on the $i$-th row, so LC$(f_i)=1$. 
+    The condition that the first nonzero entry of the $i$-th row is to the right 
+    of the first nonzero entries of higher rows implies that LT$(f_i) >$ LT$(f_j)$ for $i<j$. 
+    Therefore we can define a matrix $A$ to be in row echelon form when there 
+    exists an $m$ with $1\leq m \leq n$ such that LT$(f_1)>\ldots >$LT$(f_m)$, 
+    LC$(f_1) = \ldots =$LC$(f_m)=1$, and $f_{m+1} = \ldots = f_n = 0$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.2.10}
-
+    This is not true for $\Z_{\geq 0}^n$. A counterexample is $\Z_{\geq 0}^3$ 
+    in which there exist an infinite number of monomials in the form $(0,x,0)$ 
+    with $x>0$ such that $(1,0,0)>(0,x,0)>(0,0,1)$. 
+    
+    It is true for the grlex order 
+    on $\Z_{\geq 0}^n$ because for any $a \in \Z_{\geq 0}^n$, there is only a 
+    finite number of $b$ such that $a >_{grlex} b$. This is because $a>_{grlex}b$
+    implies that $|a| \geq |b|$. Since for any nonnegative integer $n$, there is 
+    a finite number of $b$ such that $|b|\leq n$, it must follow that there are 
+    only a finite number of $b$ such that $|b|\leq|a|$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newpage
 \begin{exercise}{2.2.11}
 
+    \bigskip
+    \textbf{(2.2.11a):}
+    \begin{proof}
+        Let $f = x^a_1+x^a_2+\ldots$ where $x^a_1 > x^a_2 > \ldots > x^a_i$ 
+        are ordered monomials, and let $m=x^b$. We have that $a_1+b>a_2+b > \ldots > a_i+b$,
+        so $x^{a_1+b}$ is the leading monomial of $mf$. Since the leading coefficient 
+        of this term is LC$(f)$, it follows that LT$(mf)$ = $m$LT$(f)$.
+    \end{proof}
+
+    \bigskip
+    \textbf{(2.2.11b):}
+    \begin{proof}
+        Let $x^{a_1} > \ldots > x^{a_n}$ be the monomials of $f$ and let 
+        $x^{b_1} > \ldots > x^{b_n}$ be the monomials of $g$. We then have that 
+        $x^{a_1+b_1} \geq x^{a_i+b_i}$. This is then the leading monomial of $fg$, 
+        with coefficient LC$(f) \cdot$LC$(g)$. Therefore LT$(fg) =$LT$(f)\cdot$LT$(g)$ 
+        as desired.
+    \end{proof}
+
+    \bigskip
+    \textbf{(2.2.11c):}
+    No. A counterexample is given by defining $f_1=1, f_2=-1, g_1=x, g_2=x+y$ 
+    using $>_{lex}$. Then $f_1g_1+f_2g_2=x-(x+y)=-y$, but
+    \[ 
+        \text{LM}(f_1)\cdot\text{LM}(g_1)=\text{LM}(f_1g_1)=\text{LM}(f_2)\cdot\text{LM}(g_2)=\text{LM}(f_2g_2)=x.
+    \]
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -78,6 +200,5 @@ Rootfinding Research Prerequisites\\
 %---------------------------------
 % Don't change anything below here
 %---------------------------------
-
 
 \end{document}
