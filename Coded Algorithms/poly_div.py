@@ -5,6 +5,9 @@ Marcelo Leszynski
 The poly_div() function is an implementation of the polynomial division algorithm 
 found on page 65 of the text. The "__main__" code uses this algorithm to verify 
 the answers to exercises 2.3.1a and 2.3.1b as required in exercise 2.3.3.
+
+Note: modifications had to be made to the algorithm proposed in the text in order 
+to handle cases where a given quotient was equal to zero.
 """
 
 import sympy as sy
@@ -24,13 +27,13 @@ def poly_div(divisors, dividend, grlex = False):
                     tempq, tempr = sy.div(sy.LT(p, order = 'grlex'), sy.LT(divisors[i], order = 'grlex'), domain = 'ZZ') 
                 else:
                     tempq, tempr = sy.div(sy.LT(p), sy.LT(divisors[i]), domain = 'ZZ') 
-            if tempr == 0:
                 if i < len(quotients):
                     quotients[i] += tempq
                 else:
                     quotients.append(tempq)
                 p -= tempq * divisors[i]
                 p = sy.expand(p)
+            if tempr == 0:
                 divisionoccured = True
             else:
                 i += 1
