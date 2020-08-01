@@ -39,17 +39,75 @@ Rootfinding Research Prerequisites\\
 
 \begin{exercise}{2.3.1}
 
+    \bigskip
+    \textbf{(2.3.1a):}
+    Using grlex order yields
+    \[
+        f=(x^6+x^2)\cdot(xy^2-x)+0\cdot(x-y^3)+(x^7+x^3-y+1)   
+    \]
+    whereas using lex order yields
+    \begin{align*}
+        f=&(x^6+x^5y+x^4y^2+x^4+x^3y+x^2y^2+2x^2+2xy+2y^2+2)\cdot(xy^2-x)+\\
+        &(x^6+x^5y+x^4+x^3y+2x^2+2xy+2)\cdot(x-y^3)+(2y^3-y+1)   
+    \end{align*}
+
+    \bigskip
+    \textbf{(2.3.1b):}
+    Using grlex order yields
+    \[
+        f=0\cdot(x-y^3)+(x^6+x^2)\cdot(xy^2-x)+(x^7+x^3-y+1)    
+    \]
+    whereas using lex order yields
+    \begin{align*}
+        f=&(x^6y^2+x^5y^5+x^4y^8+x^3y^11+x^2y^14+x^2y^2+xy^17+xy^5+y^20+y^8)\cdot(x-y^3)+\\
+        &0\cdot(xy^2-x)+(y^23+y^11-y+1)
+    \end{align*}
+
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.3.3}
-
+    Implementation of the division algorithm can be found in poly\textunderscore div.py
+    in the Coded Algorithms folder.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.3.5}
+
+    \bigskip
+    \textbf{(2.3.5a):}
+    using poly\textunderscore div.py to calculate $r_1$ and $r_2$ yields 
+    \begin{align*}
+        r_1 &= x^3-x^2z+x-z\\
+        r_2 &= x^3-x^2z
+    \end{align*}
+    The difference between the two calculations occurs during the second 
+    step of the algorithm when we are comparing leading terms.
+
+    \bigskip
+    \textbf{(2.3.5b):}
+    \[
+        r = r_1-r_2 = (x^3-x^2z+x-z)-(x^3-x^2z)=x-z \in \langle f_1, f_2 \rangle   
+    \]
+    because $x-z = f_1-xf_2$.
+
+    \bigskip
+    \textbf{(2.3.5c):}
+    The remainder is equal to $x-z$. This could be predicted because the 
+    leading terms of $f_1$ and $f_2$ do not divide any of the terms in $r$.
+
+    \bigskip
+    \textbf{(2.3.5d):}
+    Let $g=-y\cdot f_1+(xy+1)\cdot f_2 = yz-1 \in \langle f_1, f_2 \rangle$. 
+    note that no term in $g$ is divided by the leading terms of $f_1$ and $f_2$.
+
+    \bigskip
+    \textbf{(2.3.5e):}
+    The division algorithm does not solve the ideal membership problem since 
+    both $r$ and $g$ are contained in $\langle f_1, f_2 \rangle$ but dividing 
+    using the algorithm returns nonzero remainders for both $r$ and $g$.
 
 \end{exercise}
 
