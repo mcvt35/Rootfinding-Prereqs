@@ -38,18 +38,59 @@ Rootfinding Research Prerequisites\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.4.1}
+    \begin{proof}
+        Let $G = \langle x^\alpha | x^\alpha \text{ can be found in some }f \in I$
+        be a monomial ideal. If $I$ is a monomial ideal, then $I=G$ by Lemma 3 
+        and Corollary 4. 
 
+        To show that $I=G$, we examine $g \in G$ which can be expressed as the 
+        sum of terms $cx^\alpha$ where $x^\alpha$ is a monomial contained in some 
+        $f \in I$. By construction, we then have that $x^\alpha \in I$, so it follows 
+        that $g \in I$ by the definition of an ideal. To show the other inclusion, 
+        suppose that $g \in I$. This means that for all terms $cx^\alpha$ contained 
+        in $g$, $x^\alpha \in G$ by the construction of $G$. It then follows that 
+        $g \in G$ since $G$ is an ideal. 
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.4.3}
 
+    \bigskip
+    \textbf{(2.4.3a):}
+
+    \includegraphics[scale=0.25]{2-4-3a.png}
+
+    \bigskip
+    \textbf{(2.4.3b):}
+    \begin{align*}
+        &1,x,x^2,x^3,x^4,x^5\\
+        &y,xy,x^2y,x^3y,x^4y,x^5y\\
+        &y^2,xy^2,x^2y^2,x^3y^2,x^4y^2,x^5y^2\\
+        &y^3,xy^3\\
+        &y^4,xy^4\\
+        &y^5,xy^5\\
+        &y^6,xy^6\\
+        &y^\alpha, \alpha \geq 7
+    \end{align*}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.4.4}
+
+    \bigskip
+    \textbf{(2.4.4a):}
+    Let $J = \langle x^\alpha | x^\alpha y^\beta\in I \rangle$ for some $\beta \geq 0$.
+    Since $x^3y^6 \in I$, we have that $J = \langle x^3 \rangle$ with $\beta = 6$.
+    This implies that $J_0=J_1=J_2=J_3=\langle x^6 \rangle$ and $J_4=J_5=\langle x^5 \rangle$.
+    Then, by Theorem 5, we have that $I=\langle x^3y^6,x^6,x^6y,x^6y^2,x^6y^3,x^5y^4,x^5y^5\rangle$.
+
+    \bigskip
+    \textbf{(2.4.4b):}
+    Removing all terms in the previous basis that can be divided by other 
+    distinct terms results in the basis $I = \langle x^3y^6,x^6,x^5y^4 \rangle$.
 
 \end{exercise}
 
