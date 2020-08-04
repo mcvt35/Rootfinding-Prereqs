@@ -38,25 +38,61 @@ Rootfinding Research Prerequisites\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.5.1}
-
+    Consider the polynomial 
+    \[
+        g = y^2z^4-z^2 = 0\cdot (xy^2-xz+y) + 1 \cdot(xy-z^2) -y \cdot(x-yz^4) \in I. 
+    \]
+    Then LT$(g) = y^2z^4$ which is not divisible by LT$(g_1)$, 
+    LT$(g_2)$, or LT$(g_3)$. Therefore LT$(g) \not \in \langle $LT$(g_1)$, LT$(g_2)$, 
+    LT$(g_3)\rangle$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.5.7}
-
+    The given set is not a Groebner basis. A counterexample can be seen by considering 
+    the ideal $I = \langle x^4y^2-z^5,x^3y^3-1,x^2y^4-2z \rangle$ and the polynomial
+    \[
+        g=-2y^2z^5+2x^2z+xy=2y^2\cdot(x^4y^2-z^5)-xy\cdot(x^3y^3-1)-x^2\cdot(x^2y^4-2z) \in I. 
+    \]
+    Using grlex order, we have that LT$(g) = -2y^2z^5$, which is not divisible by any 
+    of the leading terms in the given set of generators for $I$. Therefore 
+    LT$(g) \not in \langle x^4y^2,x^3y^3,x^2y^4\rangle$ and by definition the given set is not a Groebner basis for the generated ideal.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.5.8}
-
+    The basis $\langle x-z^2,y-z^3\rangle$ is a Groebner basis for lex order. 
+    \begin{proof}  
+        Specifically, we claim that $\langle$LT$(I)\rangle=\langle$LT$(x-z^2),$ LT$(y-z^3)\rangle=\langle x,y \rangle$. The $(\supseteq)$ inclusion is obvious by 
+        the closure of ideals. To show the other inclusion, it suffices to show that, for any
+        polynomial $f \in I -\{0\}$, LT$(f)$ is divisible by $x$ or $y$. 
+    
+        Suppose, by way of 
+        contradiction, that this was not the case. Then LT$(f)$ is a power of $z$. Since we 
+        are using lex ordering with $x>y>z$, the multidegree of $f$ is of the form $(0,0,n)$ 
+        with $n \in \Z_{>0}$. We can use a mapping to convert from $(x,y,z)$ to $(z^2,z^3,z)$,
+        which lets $f$ map to itself, but 
+        $f \in I = \langle x-z^2,y-z^3\rangle = \langle z^2-z^2,z^3-z^3\rangle$ suggests that
+        $f$ maps to zero. This is a contradiction, so it must be that all polynomials in $I$ 
+        have a leading term that is divisible by either $x$ or $y$.
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.5.10}
-
+    \begin{proof}
+        Let $G = \{g_1,\ldots,g_n\}$ be a finite set in $I$ where $g_1$ is a generator 
+        for $I$. By the secondary (informal) definition of Groebner bases, it suffices 
+        to show that $f \in I -\{0\}$ implies that LT$(f)$ is divisible by some LT$(g_i)$ 
+        with $1 \leq i \leq n$.
+        
+        $g_1$ being a generator for $I$ and $f \in I$ imply that $f = hg_1$ for some 
+        polynomial $h$. We then have that LT$(f)=$ LT$(hg_1)=$ LT$(h)$LT$(g_1)$ by 
+        Lemma 2.4.3. Thus, LT$(f)$ is divisible by LT$(g_1)$. 
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
