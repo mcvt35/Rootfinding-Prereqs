@@ -32,41 +32,125 @@ Rootfinding Research Prerequisites\\
 
 \begin{center}
 \textsf{Assignment 2.8 } \\
-\textsf{Exercises: 1, 2, 3, 4, 5 }
+\textsf{Exercises: 1-5 }
 \end{center}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.8.1}
-
+    It is true that $f \in I$.
+    \begin{proof}
+        We begin by computing a Groebner basis $G$ in lex order 
+        \[
+            G = \{y^5-z^3,-y^2+xz,xy^3-z^2,x^2y-z,x^3-y\}.
+        \]
+        It suffices to show that the remainder of $f$ when divided by the 
+        terms in $G$ is zero. Using the division algorithm, we have 
+        \[
+            f=1\cdot(y^5-z^3)+0\cdot(-y^2+xz)+1\cdot(xy^3-z^2)+0\cdot(x^2y-z)+0\cdot(x^3-y)+0.
+        \]
+        Therefore, $f \in I$.
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.8.2}
-
+    It is not true that $f \in I$.
+    \begin{proof}
+        We begin by computing a Groebner basis $G$ in lex order
+        \[
+            G = \{2z^2+z,y-z,xz-z\}.
+        \]
+        It suffices to show that the remainder of $f$ when divided by the 
+        terms in $G$ is nonzero. Using the division algorithm, we have 
+        \[
+            f=-1\cdot(2z^2+z)+(-2y-2z)\cdot(y-z)+(x^2+x+1)\cdot(xz-z)+2z.
+        \]
+        Therefore, $f \not \in I$.
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.8.3}
-
+    We begin by computing a Groebner basis $G$ in lex order
+    \[
+        G = \{g_1,g_2,g_3\} = \{40z^2-8z-23,3y+z-1,2x-1\}.
+    \]
+    Note that $g_3$ gives $x=\frac{1}{2}$ and that $g_1$ is a quadratic in terms of $z$,
+    which we can solve to get $z=\frac{2\pm 3\sqrt{26}}{20}$. Using these values to solve 
+    for $y$ in $g_2$ gives the roots
+    \[
+        (x,y,z) = \biggr(\frac{1}{2},\frac{6-\sqrt{26}}{20},\frac{2+3\sqrt{26}}{20}\biggr),\biggr(\frac{1}{2},\frac{6+\sqrt{26}}{20},\frac{2-3\sqrt{26}}{20}\biggr).
+    \]
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newpage
 \begin{exercise}{2.8.4}
-
+    Computing a Groebner basis $G$ using lex order for the ideal 
+    \[
+        \langle x^2y-z^3,2xy-4z-1,-y^2+z,x^3-4yz\rangle
+    \]
+    yields $G=\{1\}$. Therefore, 
+    \[
+        V(x^2y-z^3,2xy-4z-1,-y^2+z,x^3-4yz) = \emptyset.
+    \]
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{2.8.5}
 
+    \bigskip
+    \textbf{(2.8.5a):}
+    To find all critical points of the function $f(x,y)$, we begin by calculating the 
+    partial derivatives 
+    \begin{align*}
+        f_x(x,y) &= 4x^3+4xy^2-8x-3\\
+        f_y(x,y) &= 4y^3+4x^2y-8y-3.
+    \end{align*}
+    Next, we compute a Groebner basis $G$ for $\langle f_x(x,y), f_y(x,y)\rangle$ and have 
+    \[
+        G=\{g_1,g_2\}=\{x-y,8y^3-8y-3\}.
+    \]
+    Note that $g_2$ can be factored into $(2y+1)(4y^2-2y+3)$. This, along with the 
+    fact that $x=y$ is given by $g_!$, yields three critical points 
+    \[
+        \biggr(-\frac{1}{2},-\frac{1}{2}\biggr),\biggr(\frac{1}{4}(1-\sqrt{13}),\frac{1}{4}(1-\sqrt{13})\biggr),\biggr(\frac{1}{4}(1+\sqrt{13}),\frac{1}{4}(1+\sqrt{13})\biggr).
+    \]
+    
+    \bigskip
+    \textbf{(2.8.5b):}
+    To determine whether the critical points are local minima/maxima or saddle points, we
+    use the second derivative test and begin by calculating the second-order partial derivatives 
+    \begin{align*}
+        f_{xx}(x,y) &= 12x^2+4y^2-8\\
+        f_{xy}(x,y) &= 8xy\\
+        f_{yy}(x,y) &= 12y^2+4x^2-8.
+    \end{align*}
+    Next, we evaluate $D=f_{xx}f_{yy}-f_{xy}^2$ at the critical points. Remembering that 
+    $x=y$ was given to us by our Groebner basis, we have that 
+    \begin{align*}
+        D(x,x)  &= 192x^4-256x^2+64 && \text{so}\\
+        D\biggr(-\frac{1}{2},-\frac{1}{2}\biggr)    &= 12 > 0   && \text{is undetermined,}\\
+        D\biggr(\frac{1}{4}(1+\sqrt{13}),\frac{1}{4}(1+\sqrt{13})\biggr)    &=26+10\sqrt{13} > 0 &&\text{is undetermined,}\\
+        D\biggr(\frac{1}{4}(1-\sqrt{13}),\frac{1}{4}(1-\sqrt{13})\biggr)    &=26-10\sqrt{13} < 0 &&\text{is a saddle point.}
+    \end{align*}
+    From this, we conclude that $(\frac{1}{4}(1-\sqrt{13}),\frac{1}{4}(1-\sqrt{13}))$ is 
+    a saddle point. The status of the remaining two critical points can be ascertained as 
+    follows:
+    \begin{align*}
+        f_{xx}\biggr(-\frac{1}{2},-\frac{1}{2}\biggr)   &= -4 < 0\\
+        f_{xx}\biggr(\frac{1}{4}(1+\sqrt{13}),\frac{1}{4}(1+\sqrt{13})\biggr)   &= 6+2\sqrt{13} >0.
+    \end{align*}
+    Thus we see that $(-\frac{1}{2},-\frac{1}{2})$ is a local maximum and that 
+    $(\frac{1}{4}(1+\sqrt{13}),\frac{1}{4}(1+\sqrt{13}))$ is a local minimum.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %---------------------------------
 % Don't change anything below here
 %---------------------------------
