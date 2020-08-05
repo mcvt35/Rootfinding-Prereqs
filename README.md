@@ -12,4 +12,5 @@ The following is a list of exercises from the above-mentioned text that I've fou
     * 4.9a
     * 5.4
 * Chapter 2
-    * TBD
+    * 4.1
+    * 5.8
