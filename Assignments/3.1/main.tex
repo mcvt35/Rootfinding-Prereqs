@@ -1,0 +1,174 @@
+\documentclass[12pt,oneside]{article}
+
+% This package simply sets the margins to be 1 inch.
+\usepackage[margin=1in]{geometry}
+
+% These packages include nice commands from AMS-LaTeX
+\usepackage{amssymb,amsmath,amsthm,graphicx}
+
+% Define an environment for exercises.
+\newenvironment{exercise}[1]{\vspace{.1in}\noindent\textbf{Exercise #1 \hspace{.05em}}}{}
+
+% define shortcut commands for commonly used symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% If you use Overleaf, the name of the project will be determined by
+% what you enter as the document title.
+\title{Math Homework Template}
+
+\begin{flushright}
+\textsc{Marcelo Leszynski}  \\
+Rootfinding Research Prerequisites\\
+08/10/20
+\end{flushright}
+
+\begin{center}
+\textsf{Assignment 3.1 } \\
+\textsf{Exercises: 1, 3, 4, 7 }
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{3.1.1}
+
+    \bigskip
+    \textbf{(3.1.1a):}
+    \begin{proof}
+        By construction, we observe that $0 \in I_l$. Furthermore, $I_l$ is closed under
+        addition since both $I$ and $k[x_{l+1},\ldots,x_n]$ are. To show $I_l$ is closed 
+        under multiplication in $k[x_{l+1},\ldots,x_n]$, we let $f \in I_l$ and 
+        $h \in k[x_{l+1},\ldots,x_n]$. Since $f \in I$ and 
+        $k[x_{l+1},\ldots,x_n] \subseteq k[x_1,\ldots,x_n]$, it follows that $hf \in I$.
+        It also follows that $hf \in k[x_{l+1},\ldots,x_n]$ since $h,f \in k[x_{l+1},\ldots,x_n]$ and $k[x_{l+1},\ldots,x_n]$ is a ring. Therefore 
+        $hf \in I \cap k[x_{l+1},\ldots,x_n] = I_l$.
+    \end{proof}
+    
+    \bigskip
+    \textbf{(3.1.1b):}
+    \begin{proof}
+        We have that 
+        \begin{align*}
+            (I_{l})_1   &= I_l \cap k[x_{l+2},\ldots,x_n]\\
+                        &= (I \cap k[x_{l+1},\ldots,x_n])\cap k[x_{l+2},\ldots,x_n]\\
+                        &= I \cap k[x_{l+2},\ldots,x_n] && \text{since }k[x_{l+2},\ldots,x_n] \subseteq k[x_{l+1},\ldots,x_n]\\
+                        &= I_{l+1}
+        \end{align*}
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{3.1.3}
+    We begin by computing a Groebner basis G for the ideal 
+    \[
+        \langle x^2+2y^2-2,x^2+xy+y^2-2 \rangle
+    \]
+    using lex order with $x > y$ and find that 
+    \[
+        G = \{ g_1, g_2, g_3 \} = \{ x^2+2y^2-2,xy-y^2,3y^3-2y \}. 
+    \]
+    Solving $g_3$ for $y$ yields $y = 0, \pm \sqrt{2/3}$. Substituting $y=0$
+    into $g_1$ and $g_2$ yields $x=\pm \sqrt{2}$, while substituting $y=\pm \sqrt{2/3}$ 
+    into both $g_1$ and $g_2$ yields $x=\pm \sqrt{2/3}$. Therefore the solutions 
+    to the system are 
+    \[
+        (x,y) = \pm(\sqrt{2}, 0), \pm(\sqrt{2/3},\sqrt{2/3}).  
+    \]
+    Note that all of these solutions lie in $\C^2$, and none exist in $\Q^2$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{3.1.4}
+    We begin by computing a Groebner basis G for the ideal 
+    \[
+        \langle x^2+y^2+z^2-4,x^2+2y^2-5,xz-1 \rangle    
+    \]
+    using lex order with $x > y > z$ and find that 
+    \[
+        G = \{ g_1,g_2,g_3\} = \{ x+2z^3-3z,y^2-z^2-1,2z^4-3z^2+1 \}.    
+    \]
+    The Elimination Theorem then gives that 
+    \begin{align*}
+        I_1 &= \langle y^2-z^2-1, 2z^4-3z^2+1 \rangle \subseteq \Q[y,z]\\
+        I_2 &= \langle 2z^4-3z^2+1 \rangle \subseteq \Q[z].
+    \end{align*}
+    To find solutions over $\Q$, we use $g_3$ to find values $z = \pm1, \pm \frac{1}{\sqrt{2}}$.
+    Over $Q$, we ignore all irrational values for $z$ and thus we have $z = \pm1$.
+    Substituting these values into $g_2$ yields $y = \pm \sqrt{2}$. Since these 
+    values are irrational, we see that there are no solutions to the system 
+    over $\Q$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{3.1.7}
+    
+    \bigskip
+    \textbf{(3.1.7a):}
+    Computing a Groebner basis for the ideal 
+    \[
+        I = \langle t^2+x^2+y^2+z^2,t^2+2x^2-xy-z^2,t+y^3-z^3 \rangle    
+    \]
+    using lex order with $t > x > y > z$ yields a Groebner basis 
+    $G = \{g_1,g_2,g_3,g_4,g_5\}$ defined by 
+    \begin{align*}
+        g_1 &= t+y^3-z^3\\
+        g_2 &= x^2+y^6-2y^3z^3+y^2+z^6+z^2\\
+        g_3 &= xy+y^6-2y^3z^3+2y^2+z^6+3z^2\\
+        g_4 &= 3xz^2+xz^6-y^{11}+4y^8z^3-5y^7-5y^5z^6-3y^5z^2\\
+            &+10y^4z^3-5y^3+2y^2z^9+6y^2z^5-3yz^6-7yz^2\\
+        g_5 &= y^{12}-4y^9z^3+5y^8+6y^6z^6+6y^6z^2-10y^5z^3+5y^4\\
+            &-4y^3z^9-12y^3z^5+5y^2z^6+13y^2z^2+z^{12}+6z^8+9z^4.
+    \end{align*}
+    Since only $g_1$ involves $t$, the remaining $\{g_2,g_3,g_4,g_5\}$ form 
+    a Groebner basis for $I \cap k[x,y,z]$ in lex order with $x>y>z$ by 
+    the Elimination Theorem. $g_4$ has a total degree of $12$.
+        
+    \bigskip
+    \textbf{(3.1.7b):}
+    Computing a Groebner basis for $I \cap \Q[x,y,z]$ in grevlex order with 
+    $x>y>z$ yields 
+    \begin{align*}
+        h_1 &= x^2-xy-y^2-2z^2\\
+        h_2 &= y^6-2y^3z^3+z^6+xy+2y^2+3z^2.
+    \end{align*}
+        
+    \bigskip
+    \textbf{(3.1.7c):}
+    We wish to show that $\{g_1,h_1,h_2\}$ is a Groebner basis for the elimination 
+    order $>_1$. Let $f \in I$ be arbitrary. We then have two cases. In the first case,
+    suppose the LT$_{>_1}(f)$ involves $t$. Then LT$_{>_1}(f)$ is divisible by 
+    $t=$LT$_{>_1}(g_1)$. 
+    
+    In the second case, LT$_{>_1}(f)$ does not involve $t$. 
+    That means that no other monomial term of $f$ involves $t$ because of the 
+    ordering we have chosen. It follows that $f \in I \cap k[x,y,z]$. Using 
+    Exercise 3.1.7b, we conclude that LT$_{>_{grevlex}}(f)$ is divisible by 
+    either LT$_{>_{grevlex}}(h_1)$ or LT$_{>_{grevlex}}(h_2)$. Note that both 
+    $>_1$ and $>_{grevlex}$ agree on $k[x,y,z]$, so it must be that 
+    LT$_{>_1}(f)$ is divisible by either LT$_{>_1}(h_1)$ or LT$_{>_1}(h_2)$. 
+
+    Therefore, in all cases, an arbitrary $f \in I$ has a leading term 
+    LT$_{>_1}(f)$ that is divisible by at least one of LT$_{>_1}(g_1)$, 
+    LT$_{>_1}(h_1)$, or LT$_{>_1}(h_2)$. Since $g_1, h_1, h_2 \in I$, we 
+    can conclude that $\{g_1,h_1,h_2\}$ is a Groebner basis for $I$ on 
+    $>_1$.
+    
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------------
+% Don't change anything below here
+%---------------------------------
+
+\end{document}
