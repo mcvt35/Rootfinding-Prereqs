@@ -1,0 +1,218 @@
+\documentclass[12pt,oneside]{article}
+
+% This package simply sets the margins to be 1 inch.
+\usepackage[margin=1in]{geometry}
+
+% These packages include nice commands from AMS-LaTeX
+\usepackage{amssymb,amsmath,amsthm,graphicx}
+
+% Define an environment for exercises.
+\newenvironment{exercise}[1]{\vspace{.1in}\noindent\textbf{Exercise #1 \hspace{.05em}}}{}
+
+% define shortcut commands for commonly used symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\N}{\mathbb{N}} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% If you use Overleaf, the name of the project will be determined by
+% what you enter as the document title.
+\title{Math Homework Template}
+
+\begin{flushright}
+\textsc{Marcelo Leszynski}  \\
+Rootfinding Research Prerequisites\\
+08/10/20
+\end{flushright}
+
+\begin{center}
+\textsf{Assignment 4.1 } \\
+\textsf{Exercises: 2, 4, 7, 8 }
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.1.2}
+    We first begin by calculating $V(J)$ and note that, for any $(a,b) \in V(J)$,
+    \[
+        a^2+b^2-1 = b-1 = 0 \Rightarrow b = 1 \Rightarrow a = 0
+    \]
+    so $V(J) = \{(0,1)\}$. Using this variety, we see that the polynomial $f=x$ vanishes 
+    at the point $(0,1)$, so $f \in I(V(J))$. To show that $f \not \in J$, we compute the 
+    Groebner basis $G$ for $J$ with lex order and $x > y$ and have $G = \{x^2,y-1\}$. None 
+    of the terms in $G$ divide $f = x$, so dividing $f$ by $G$ yields a nonzero remainder and
+    $f = x \not \in \langle G \rangle = J$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.1.4}
+    \begin{proof}
+        Let $k$ be an algebraically closed field. We wish to show that $k$ must be infinite 
+        and proceed by contradiction. Assume, by way of contradiction, that $k$ is finite 
+        such that $k = \{a_1, \ldots, a_n\}$. We then have that the polynomial 
+        $f = (x-a_1)\ldots(x-a_n) + 1$ is nonconstant and satisfies 
+        $f(a_1) = \ldots = f(a_n) = 1$. Since $k$ is algebraically closed, we know that 
+        there exists some $a \in k$ with $f(a) = 0$. We then have that $a = a_i$ for some 
+        $1 \leq i \leq n$, which gives $0=f(a)=f(a_i)=1$, which is a contradiction. Therefore,
+        $k$ must be infinite.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.1.7}
+    Credit to:
+    
+    \bigskip
+    https://web.ma.utexas.edu/users/allcock/expos/nullstellensatz3.pdf
+    
+    \bigskip
+    https://pdfs.semanticscholar.org/34b1/0b8c7deb313c12e729e1663a0b407dd3e80c.pdf
+    
+    \bigskip
+    (2) $\Rightarrow$ (3): Let $k[t_1, \ldots, t_n]$ be a polynomial ring and let $L$ be 
+    a field such that $k \subseteq L$. This implies that the terms $a_1, \ldots, a_n \in L$
+    give a map 
+    \[
+        g(t_1,\ldots,t_n) \in k[t_1,\ldots,t_n] \rightarrow g(a_1,\ldots,a_n) \in L
+    \]
+    which preserves addition and multiplication. We apply this idea to the polynomial ring 
+    $k[x_1,\ldots,x_n,y]$ over the field of rational functions $k(x_1,\ldots,x_n)$. We 
+    can evaluate this ring at terms $x_1,\ldots,x_n,1/f$ with $1/f \in k(x_1,\ldots,x_n)$
+    to yield the map 
+    \[
+        g(x_1,\ldots,x_n,y) \in k[x_1,\ldots,x_n,y] \rightarrow g(x_1,\ldots,x_n, 1/f) \in k(x_1,\ldots,x_n).
+    \]
+    Note that this mapping preserves addition and multiplication and is also the map of 
+    the identity on $k[x_1,\ldots,x_n]$. Proceeding from equation (2) in the text, we can 
+    evaluate the given polynomial as follows:
+    \begin{align*}
+        1   &= \sum_{i=1}^sp_1(x_1,\ldots,x_n,y)f_i+q(x_1,\ldots,x_n,y)(1-yf)\\
+            &= \sum_{i=1}^sp_1(x_1,\ldots,x_n,1/f)f_i+q(x_1,\ldots,x_n,1/f)(1-(1/f)f)\\
+            &= \sum_{i=1}^sp_1(x_1,\ldots,x_n,1/f)f_i+q(x_1,\ldots,x_n,1/f)\cdot 0\\
+            &= \sum_{i=1}^sp_1(x_1,\ldots,x_n,1/f)f_i.
+    \end{align*}
+    The resulting equation given above can be used to justify equation (3) in the text.
+    
+    \bigskip
+    (3) $\Rightarrow$ (4): To show this justification, we further analyze $p_i(x_1,\ldots,x_n,1/f)$.
+    Note that 
+    \[
+        p_i(x_1,\ldots,x_n,y) = \sum_{l=1}^{m_i}h_l(x_1,\ldots,x_n)y^l.
+    \]
+    Using our previous mapping, this evaluates to 
+    \begin{align*}
+        p_i(x_1,\ldots,x_n,y)   &= p_i(x_1,\ldots,x_n,1/f) = \sum_{l=1}^{m_i}h_l(x_1,\ldots,x_n)1/f^l \in k(x_1,\ldots,x_n)\\
+    \end{align*}
+    It follows that 
+    \[
+        f^{m_i}p_i(x_1,\ldots,x_n,1/f) = \sum_{l=1}^{m_i}h_l(x_1,\ldots,x_n)f^{m_i-l}
+    \]
+    is a polynomial in $x_1,\ldots, x_n$. We can arrive at equation (4) by fixing 
+    $m = \max(m_1,\ldots,m_s)$ and multiplying each side of (3) by $f^m$.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.1.8}
+
+    \bigskip
+    \textbf{(4.1.8a):}
+    \begin{proof}
+        Let $g = a_0x^n + a_1x^{n-1} + \ldots + a_{n-1}x + a_n$ be a polynomial of degree 
+        $n$ in $x$, and define the homogenization $g^h$ of $g$ with respect to some 
+        variable $y$ as the polynomial $g^h = a_0x^n +a_1x^{n-1}y + \ldots a_{n-1}xy^{n-1} + a_ny^n$.
+        We wish to show that $g$ has a root in $k$ if and only if there exists some 
+        $(a,b) \in k^2$ such that $(a,b) \neq (0,0)$ and $g^h(a,b) = 0$ Before we 
+        proceed, we note that 
+        \[
+            g^h(x,y) = \sum_{i=0}^n a_ix^{n-i}y^i = \sum_{i=0}^na_i\biggr(\frac{x}{y}\biggr)^{n-i}y^n = y^ng^h\biggr(\frac{x}{y},1\biggr) = y^ng\biggr(\frac{x}{y}\biggr).
+        \]
+        
+        \bigskip
+        ($\Rightarrow$): Assume that $g$ has a root $r \in k$. Using the above notation, 
+        we have that 
+        \[
+            0 = g(r) = 1^ng(r/1) = g^h(r,1),
+        \]
+        so $(r,1)$ is a root of $g^h$.
+        
+        \bigskip
+        ($\Leftarrow$): Assume that there is some nontrivial root $(r_1,r_2) \neq (0,0)$ 
+        of $g^h$. We now divide the proof into two cases: in the first case, $r_2 = 0$. 
+        Then $0=g^h(r_1,0) = a_0r_1^n$, implying that $r_1 = 0$. This is a contradiction 
+        since $(r_1,r_2) \neq (0,0)$, so this case can never hold. 
+        In the second case, $r_2 \neq 0$, so we have 
+        \[
+            0 = g^h(r_1,r_2) = r_2^ng(r_1/r_2),
+        \]
+        implying that $g(r_1,r_2) = 0$.
+    \end{proof}
+    
+    \bigskip
+    \textbf{(4.1.8b):}
+    \begin{proof}
+        Let $g$ be a nonconstant polynomial with no root in $k$ of degree $n$. Let 
+        $f(x,y) = g^h$ be the homogenization of $g$. Then $f$ vanishes at $(0,0)$ since 
+        every term of $f$ is of degree $n > 0$. We know by Exercise 4.1.8a that any other 
+        root $(a,b)$ of $f$ with $f(a,b) = 0, (a,b) \neq 0$ implies that $g$ has a root 
+        in $k$. By construction of $g$, we know that this cannot occur. Therefore $(0,0)$ 
+        is the only solution of $f=0$.
+    \end{proof}
+    
+    \bigskip
+    \textbf{(4.1.8c):}
+    \begin{proof}
+        
+        \bigskip
+        \underline{Base Case}:
+        Let $f_2 = f$ be given by $f$ in Exercise 4.1.8b. This proves the base case for 
+        our inductive proof of $n=2$. 
+        
+        \bigskip
+        \underline{Inductive Hypothesis}:
+        We proceed by induction and assume there exists some
+        $f_m \in k[x_1,\ldots,x_m]$ such that $f_m(a_1,\ldots, a_m) = 0$ if and only if 
+        $a_1 = \ldots = a_m = 0$ for $(a_1,\ldots, a_m) \in k^m$. 
+        
+        \bigskip
+        \underline{Inductive Step}:
+        Define $f_{m+1} = f_2(f_m(x_1,\ldots,x_m),x_{m+1})$ and let 
+        $(a_1,\ldots,a_m,b) \in k^{m+1}$. We then have that 
+        \begin{align*}
+            0 = f_{m+1}(a_1,\ldots,a_m,b) \Leftrightarrow 0 = f_2(f_m(a_1,\ldots,a_m)b) &\Leftrightarrow f_m(a_1,\ldots,a_m) = 0 \text{ and } b=0\\
+            &\Leftrightarrow a_1 = \ldots = a_m = 0 \text{ and } b=0.\\
+        \end{align*}
+    \end{proof}
+    
+    \newpage
+    \textbf{(4.1.8d):}
+    \begin{proof}
+        Let $W = V(g_1,\ldots,g_s)$ be a variety in $k^n$ with $k$ not being algebraically 
+        closed, and let $f_s \in k[y_1,\ldots,y_s]$ be given by Exercise 4.1.8c. Note 
+        the existence of $f_s$ is due to $k$ not being algebraically closed. We can set 
+        \begin{align*}
+            h&=f_s(g_1,\ldots,g_s) \in k[x_1,\ldots,x_n],\\
+            a&=(a_1,\ldots,a_n) \in k^n
+        \end{align*}
+        which gives 
+        \[
+            h(a) = 0 \Leftrightarrow f_s(g_1(a),\ldots,g_s(a)) = 0 \Leftrightarrow g_1(a) = \ldots = g_s(a) = 0.
+        \]
+        This proves that $W = V(h)$ as desired.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------------
+% Don't change anything below here
+%---------------------------------
+
+\end{document}
