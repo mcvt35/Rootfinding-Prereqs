@@ -1,0 +1,202 @@
+\documentclass[12pt,oneside]{article}
+
+% This package simply sets the margins to be 1 inch.
+\usepackage[margin=1in]{geometry}
+
+% These packages include nice commands from AMS-LaTeX
+\usepackage{amssymb,amsmath,amsthm,graphicx}
+
+% Define an environment for exercises.
+\newenvironment{exercise}[1]{\vspace{.1in}\noindent\textbf{Exercise #1 \hspace{.05em}}}{}
+
+% define shortcut commands for commonly used symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\N}{\mathbb{N}} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% If you use Overleaf, the name of the project will be determined by
+% what you enter as the document title.
+\title{Math Homework Template}
+
+\begin{flushright}
+\textsc{Marcelo Leszynski}  \\
+Rootfinding Research Prerequisites\\
+08/10/20
+\end{flushright}
+
+\begin{center}
+\textsf{Assignment 4.3 } \\
+\textsf{Exercises: 2, 3, 4, 6, 8 }
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.3.2}
+    \begin{proof}
+        Let $f,g \in k[x_1,\ldots,x_2]$ and let $f=cf_1^{a_1}\ldots f_r^{a_r}$ and 
+        $g=c^lg_1^{b_1}\ldots g_s^b$ be their factorizations into distinct irreducible 
+        polynomials such that $f_1,\ldots,f_l$ are constant multiples of 
+        $g_1,\ldots,g_l$ and for $i,j>l, f_i$ is not a constant multiple of $g_j$. 
+        We wish to show that 
+        \[
+            \text{lcm}(f,g) = f_1^{\max(a_1,b_1)}\ldots f_l^{\max(a_l,b_l)}\cdot g_{l+1}^{b_{l+1}}\ldots g_s^{b_s}\cdot f_{l+1}^{a_{l+1}}\ldots f_r^{a_r}.
+        \]
+        
+        We begin by noting that lcm$(f,g)$ is a common multiple of $f,g$ by definition. 
+        We can define another arbitrary common multiple $h$ of $f$ and $g$, which implies 
+        that the irreducible factorization of $h$ includes all irreducible factors of $f,g$.
+        In other words, $h$ contains all 
+        $f_1 = g_1,\ldots,f_l = g_l, f_{l+1},\ldots,f_r,g_{l+1},\ldots,g_s$. Since the 
+        exponent of each of these irreducible factors of $h$ must be greater than or equal 
+        to the corresponding exponents in $f$ and $g$, it follows that lcm$(f,g)$ must 
+        divide $h$. Therefore, we can conclude that lcm$(f,g)$ as defined above is 
+        the least common multiple of $f$ and $g$.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.3.3}
+    \begin{proof}
+        Let $I,J \subseteq k[x_1,\ldots,x_n]$ be principal ideals. We wish to show that 
+        their intersection $I \cap J$ is also a principal ideal. To show this, we let 
+        $h \in I \cap J, I= \langle f \rangle, J= \langle g \rangle$ as defined in 
+        Proposition 13. We then have that 
+        \begin{align*}
+            h \in I \cap J  &\Leftrightarrow h\in I, h\in J\\
+                            &\Leftrightarrow h \in \langle f \rangle, h \in \langle g \rangle\\
+                            &\Leftrightarrow h \text{ is a multiple of }f, g\\
+                            &\Leftrightarrow h \text{ is a multiple of lcm}(f,g) && \text{by Exercise 4.3.2}\\
+                            &\Leftrightarrow h \in \langle \text{lcm}(f,g)\rangle.
+        \end{align*}
+        From this equivalence, it follows that 
+        $\langle f \rangle \cap \langle g \rangle = \langle$lcm$(f,g)\rangle$. Therefore, 
+        the intersection of two principal ideals is also principal.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.3.4}
+    \begin{proof}
+        Let $I,J \subseteq k[x_1,\ldots,x_n]$ be principal ideals and assume that 
+        $I=\langle f \rangle, J = \langle g \rangle$, and $I\cap J = \langle h \rangle$. 
+        We wish to show that $h = $lcm$(f,g)$. Note that this equivalence is demonstrated 
+        by the equivalences given in Exercise 4.3.3, i.e., 
+        $I\cap J = \langle\text{lcm}(f,g)\rangle$, together with our assumption, implies that 
+        $h = $ lcm$(f,g)$.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{exercise}{4.3.6}
+    
+    \bigskip
+    \textbf{(4.3.6a):}
+    Let $I_l,\ldots, I_r, J$ be ideals in $k[x_1,\ldots,x_n]$. We wish to show that 
+    $(I_1+I_2)J = I_1J+I_2J$. Defining these ideals in terms of their generators, we have 
+    $I_1 = \langle f_1,\ldots, f_r \rangle, I_2 = \langle g_1,\ldots, g_s \rangle$, and 
+    $J = \langle h_1, \ldots, h_t \rangle$. The definition of ideal multiplication then 
+    implies that 
+    \begin{align*}
+        (I_1+I_2)J  &= \langle f_1,\ldots,f_r,g_1,\ldots,g_s\rangle \cdot \langle h_1,\ldots,h_t \rangle\\
+                    &= \langle f_ih_l,g_jh_l : 1\leq i \leq r, 1 \leq j \leq s, 1 \leq l \leq t \rangle\\
+                    &\text{and}\\
+        I_1J+I_2J   &= \langle f_ih_l : 1 \leq i \leq r, 1 \leq l \leq t \rangle + \langle g_jh_l : 1 \leq j \leq s, 1 \leq l \leq t \rangle\\
+                    &= \langle f_1h_l,g_jh_l: 1 \leq i \leq r, 1 \leq j \leq s, 1 \leq l \leq t \rangle.
+    \end{align*}
+    Therefore, $(I_1+I_2)J = I_1J + I_2J$ as needed.
+    
+    \bigskip
+    \textbf{(4.3.6b):}
+    Let $I_l,\ldots, I_r, J$ be ideals in $k[x_1,\ldots,x_n]$. We wish to show that 
+    $(I_1\ldots I_r)^m = I_1^m\ldots I_r^m$ and proceed by induction on $m \geq 1$. 
+    
+    \underline{Base Case}: This case is easily confirmed by observation
+    
+    \underline{Inductive Hypothesis}: Assume that $(I_1\ldots I_r)^k = I_1^k\ldots I_r^k$ 
+    for all $k\geq 1$. 
+    
+    \underline{Inductive Step}: The inductive hypothesis implies that 
+    \[
+        (I_1\ldots I_r)^{k+1} = (I_1\ldots I_r)^k \cdot I_1\ldots I_r = I_1^k\ldots I_r^k\cdot I_1 \ldots I_r,
+    \]
+    which implies that 
+    \[
+        (I_1\ldots I_r)^{k+1} = (I_1^k \cdot I_1) \ldots (I_r^k \cdot I_r) = I_1^{k+1} \ldots I_r^{k+1}
+    \]
+    as needed.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.3.8}
+    
+    \bigskip
+    \textbf{(4.3.8a):}
+    To compute generators for $\langle f \rangle \cap \langle g \rangle$ with $f,g$ being 
+    defined in the text, we use Theorem 4.3.11 and compute a lex order Groebner basis for
+    $\langle tf, (1-t)g \rangle$ with $t>x>y>z$. This turns out to be 
+    
+    \begin{align*}
+    \{&x^5 + x^4 y - x^3 y^2 - x^2 y^3 + 2 x^4 z^2 + 2 x^3 y z^2 2 x^2 y^2 z^2 - 2 x y^3 z^2 + x^3 z^4 + x^2 y z^4 - x y^2 z^4 y^3 z^4,\\&x^4 + t x^3 y - x^2 y^2 - t x y^3 + 2 x^3 z^2 - t x^3 z^2 + t x^2 y z^2 \\&- 2 x y^2 z^2 + t x y^2 z^2 - t y^3 z^2 + x^2 z^4 t x^2 z^4 - y^2 z^4 + t y^2 z^4,\\&-x^4 + t x^4 + x^2 y^2 t x^2 y^2 - 2 x^3 z^2 + 2 t x^3 z^2 + 2 x y^2 z^2 - 2 t x y^2 z^2 x^2 z^4 + t x^2 z^4 + y^2 z^4 - t y^2 z^4\}.
+    \end{align*}
+    
+    Note that all polynomials in this set involve $t$ except for the first. This means that 
+    a basis for $\langle f \rangle \cap \langle g \rangle$ can be given by 
+    \[
+        x^5+x^4y-x^3y^2-x^2y^3+2x^4z^2+2x^3yz^2-2x^2y^2z^2-2xy^3z^2+x^3z^4+x^2yz^4-xy^2z^4-y^3z^4.
+    \]
+    Note that this polynomial is the same as lcm$(f,g)$ by Proposition 4.3.13.
+    
+    To compute generators for $\sqrt{\langle f \rangle \langle g \rangle}$, note that 
+    $\sqrt{\langle f \rangle \langle g \rangle} = \sqrt{\langle fg \rangle}$. We can 
+    use Proposition 4.2.12 to equate 
+    $\sqrt{\langle fg \rangle} = \langle (fg)_{red} \rangle$, where 
+    \[
+        (fg)_{red} = \frac{fg}{\text{gcd}(fg,\frac{\partial fg}{\partial x},\frac{\partial fg}{\partial y},\frac{\partial fg}{\partial z})}.
+    \]
+    
+    Since we know that
+    \[
+        \text{gcd}\biggr(fg,\frac{\partial fg}{\partial x},\frac{\partial fg}{\partial y},\frac{\partial fg}{\partial z}\biggr) = \frac{fg\cdot\frac{\partial fg}{\partial x}\cdot\frac{\partial fg}{\partial y}\cdot\frac{\partial fg}{\partial z}}{\text{lcm}(fg,\frac{\partial fg}{\partial x},\frac{\partial fg}{\partial y},\frac{\partial fg}{\partial z})}
+    \]
+    by Proposition 4.3.14, we have that 
+    $\sqrt{\langle f \rangle \langle g \rangle} = \langle -x^3+xy^2-x^2z^2+y^2z^2 \rangle$.
+        
+    \bigskip
+    \textbf{(4.3.8b):}
+        Using Proposition 4.3.14, we have that 
+        \[
+            \text{gcd}(f,g) = \frac{fg}{\text{lcm}(f,g)} = x^3-xy^2+x^2z^2-y^2z^2.
+        \]
+        
+    \bigskip
+    \textbf{(4.3.8c):}
+    Using the definitions for $p,q$ found in the text, we compute a lex order Groebner basis
+    of $\langle tf,tg,(1-t)p,(1-t)q \rangle$ with $t,x,y,z$ and get
+    
+    \begin{align*}
+    \{&x^3 y - x y^3 - x^3 z^2 + x^2 y z^2 + x y^2 z^2 y^3 z^2 - x^2 z^4 + y^2 z^4,\\&x^4 - x^2 y^2 + 2 x^3 z^2 - 2 x y^2 z^2 + x^2 z^4 - y^2 z^4,\\&-y^2 z + t y^2 z - y z^2 + t y z^2,\\&-x y + t x y - x z + t x z,\\&-x^2 + t x^2 - y z + t y z\}. 
+    \end{align*}
+    
+    Since the first two polynomials in this basis don't involve $t$, we have that 
+    \begin{align*}
+        \langle f,g \rangle \cap \langle p,q \rangle = &\langle x^3y-xy^3-x^3z^2+x^2yz^2+xy^2z^2-y^3z^2-x^2z^4+y^2z^4,\\&x^4-x^2y^2+2x^3z^2-2xy^2z^2+x^2z^4-y^2z^4 \rangle.
+    \end{align*}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------------
+% Don't change anything below here
+%---------------------------------
+
+\end{document}
