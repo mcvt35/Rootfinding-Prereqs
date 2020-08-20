@@ -1,0 +1,161 @@
+\documentclass[12pt,oneside]{article}
+
+% This package simply sets the margins to be 1 inch.
+\usepackage[margin=1in]{geometry}
+
+% These packages include nice commands from AMS-LaTeX
+\usepackage{amssymb,amsmath,amsthm,graphicx}
+
+% Define an environment for exercises.
+\newenvironment{exercise}[1]{\vspace{.1in}\noindent\textbf{Exercise #1 \hspace{.05em}}}{}
+
+% define shortcut commands for commonly used symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\N}{\mathbb{N}} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% If you use Overleaf, the name of the project will be determined by
+% what you enter as the document title.
+\title{Math Homework Template}
+
+\begin{flushright}
+\textsc{Marcelo Leszynski}  \\
+Rootfinding Research Prerequisites\\
+08/10/20
+\end{flushright}
+
+\begin{center}
+\textsf{Assignment 4.2 } \\
+\textsf{Exercises: 1-5 }
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.2.1}
+    \begin{proof}
+        Let $k$ be a field. We wish to show that 
+        $\sqrt{\langle x^n, y^m \rangle} = \langle x,y\rangle$ for any positive integers 
+        $n$ and $m$. 
+
+        \bigskip
+        ($\subseteq$): Let $f \in \sqrt{\langle x^n, y^m \rangle}$. We then have that 
+        $f^p = Ax^n + By^m$ for some $p \geq 1$. This implies that $f(0,0) = 0$. We 
+        can then write $f = xf_1 + yf_2 + r$ with $r \in k$, and our previous statement 
+        implies that $r = 0$. Therefore, $f \in \langle x,y \rangle$.
+                
+        \bigskip
+        ($\supseteq$): Note that $x^n, y^m \in \langle x^n,y^m \rangle$ which implies 
+        $x,y \in \sqrt{\langle x^n,y^m \rangle}$ by definition. It follows that 
+        $\langle x,y \rangle$ by Lemma 4.2.5.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.2.2}
+    The given proposition is not necessarily true. We show this by fixing $f = x^2$ and 
+    $g = x^3$. We then have that 
+    $\langle f^2,g^3 \rangle = \langle x^4,x^9 \rangle = \langle x^4 \rangle$, but
+    $\langle f,g \rangle = \langle x^2,x^3 \rangle = \langle x^2 \rangle$. This demonstrates
+    that $x \in \sqrt{\langle x^4 \rangle} = \sqrt{I}$, but 
+    $x \not \in \langle x^2 \rangle = \langle f,g \rangle$. Therefore 
+    $\sqrt{I} \not \subseteq \langle f,g \rangle$ in all cases.
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.2.3}
+    \begin{proof}
+        We begin by showing that $V(x^2+1)$ is the empty variety, which can be quickly 
+        verified by noting that $x^2+1 \in \R[x]$ has no roots in $\R$. Thus, 
+        $V(x^2+1) = \emptyset$.
+        
+        Next, we show that $\langle x^2+1 \rangle \subseteq \R[x]$ is a radical ideal. This 
+        is done by recognizing that this polynomial is irreducible as a result of any 
+        nontrivial factorization in $\R[x]$ involving linear factors. These linear 
+        factors would result in roots in $\R$, which is a contradiction. Next, we 
+        suppose that $f \in \R[x]$ satisfies $f^m \in \langle x^2+1 \rangle$. This 
+        implies that $x^2+1$ is an irreducible factor of $f^m$. It follows that 
+        $x^2+1$ must be an irreducible factor of $f$, thus we have that 
+        $f\in\langle x^2+1\rangle$ and that $\langle x^2+1 \rangle$ is radical.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.2.4}
+    Let $I$ be an ideal in $k[x_1,\ldots,x_n]$ where $k$ is an arbitrary field.
+    
+    \bigskip
+    \textbf{(4.2.4a):}
+    \begin{proof}
+        We wish to show that $\sqrt{I}$ is a radical ideal and proceed directly. 
+        Suppose that $f^m \in \sqrt{I}$. By the definition of a radical ideal, 
+        it follows that there exists some $n \geq 1$ such that $(f^m)^n = f^{mn} \in I$, 
+        implying $f \in \sqrt{I}$. Therefore, $\sqrt{I}$ is radical.
+    \end{proof}
+    
+    \newpage
+    \textbf{(4.2.4b):}
+    \begin{proof}
+        We wish to show that $I$ is radical if and only if $I = \sqrt{I}$ and proceed 
+        directly.
+        
+        ($\Rightarrow$): Assuming that $I$ is radical, we have that $I \subseteq \sqrt{I}$ 
+        by Lemma 4.2.5. To show the other inclusion, let $f \in \sqrt{I}$. This implies 
+        that there exists some $m \geq 1$ such that $f^m \in I$. Since $I$ is radical 
+        by assumption, we conclude that $f \in I$. Therefore $I = \sqrt{I}$.
+        
+        ($\Leftarrow$): This follows from Exercise 4.2.4a
+    \end{proof}
+    
+    \bigskip
+    \textbf{(4.2.4c):}
+    \begin{proof}
+        Exercise 4.2.4a implies that $\sqrt{I}$ is radical. We can then make the 
+        substitution $I = \sqrt{I}$ in Exercise 4.2.4b to show that 
+        $\sqrt{I} = \sqrt{\sqrt{I}}$ as desired.
+    \end{proof}
+    
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{4.2.5}
+    \begin{proof}
+        We begin by proving that the mappings $I$ and $V$ are inclusion-reversing and 
+        proceed directly. Working on the mapping $I$, we let $A$ and $B$ be affine varieties 
+        in $k^n$. Assuming that $A \subseteq B$, any polynomial vanishing on $B$ must 
+        vanish on $A$, so $I(B) \subseteq I(A)$. Conversely, we assume that 
+        $I(B) \subseteq I(A)$. Since we can define $B$ in terms of polynomials 
+        $f_1,\ldots,f_m \in k[x_1,\ldots,x_n]$, we have that 
+        $f_1,\ldots,f_m \in I(B) \subseteq I(A)$ so all polynomials $f_i$ vanish on $A$. 
+        Since $B$ consists of all common zeros of the polynomials $f_i$, it follows that 
+        $A \subseteq B$.
+        
+        Next, we work on the mapping $V$. Let $I, J$ be ideals and assume $I \subseteq J$.
+        Let $a \in V(J)$, so $f(a) = 0$ for all $f \in J$. Since $I \subseteq J$, we can 
+        conclude that $f(a) = 0$ for all $f \in I$, so $a \in V(I)$. Since $a$ was
+        arbitrary, we conclude that $V(J) \subseteq V(I)$. 
+        
+        Finally, to show that $V(\sqrt{I}) = V(I)$, we have that $I \subseteq \sqrt{I}$ by 
+        Lemma 4.2.5, so $V(\sqrt{I}) \subseteq V(I)$. To show the other inclusion, we let 
+        $a \in V(I)$ and $f \in \sqrt{I}$. We then have that $f^m \in I$ for some $m \geq1$,
+        so it follows that $f^m(a) = (f(a))^m = 0$. This implies that $f(a) = 0$, which
+        gives that $a \in V(\sqrt{I})$. Therefore $V(I) \subseteq V(\sqrt{I})$ as needed.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------------
+% Don't change anything below here
+%---------------------------------
+
+\end{document}
