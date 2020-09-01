@@ -15,4 +15,4 @@ The following is a list of exercises from the above-mentioned text that I've fou
     * 4.1
     * 5.8
 * Chapter 4
-    * TBD
+    * TBA
