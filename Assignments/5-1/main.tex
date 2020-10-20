@@ -1,0 +1,147 @@
+\documentclass[12pt,oneside]{article}
+
+% This package simply sets the margins to be 1 inch.
+\usepackage[margin=1in]{geometry}
+
+% These packages include nice commands from AMS-LaTeX
+\usepackage{amssymb,amsmath,amsthm,graphicx}
+
+% Define an environment for exercises.
+\newenvironment{exercise}[1]{\vspace{.1in}\noindent\textbf{Exercise #1 \hspace{.05em}}}{}
+
+% define shortcut commands for commonly used symbols
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}} 
+\newcommand{\N}{\mathbb{N}} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% If you use Overleaf, the name of the project will be determined by
+% what you enter as the document title.
+\title{Math Homework Template}
+
+\begin{flushright}
+\textsc{Marcelo Leszynski}  \\
+Rootfinding Research Prerequisites\\
+10/7/20
+\end{flushright}
+
+\begin{center}
+\textsf{Assignment 5.1 } \\
+\textsf{Exercises: 1, 2, 4, 8 }
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{5.1.1}
+    \begin{proof}
+        We begin by parameterizing V as follows:
+        \[
+            x = t, y = t^2, z=t^3.    
+        \]
+        We now have that 
+        \[
+            v-u-u^2=z+x^2y^2-xy-(xy)^2=t^3+t^2(t^2)^2-t\cdot t^2-(t\cdot t^2)^2=0.
+        \]
+        Thus $W$ contains the image of $V$ under $\phi$ and $phi$ 
+        is a polynomial mapping from $V$ to $W$.
+    \end{proof}
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{5.1.2}
+    The image of $V$ under $\phi$ consists of all three-tuples 
+    $(u,v,w) \in \R^3$ that satisfy 
+    \[
+        y-x = u - (x^2-y) = v - (y^2) = w - (x-3y^2) = 0    
+    \] 
+    for some $(x,y) \in \R^2$. Letting the above system generate 
+    an ideal and computing a Grobner basis for said ideal with 
+    lex order $x > y > u > v > w$ yields
+    \[
+        x-3v-w, y-3v-w, u+2v+w, v^2+\frac{2}{3}vw-\frac{1}{9}v+\frac{1}{9}w^2.    
+    \]
+    This can be further simplified using the Elimination Theorem, 
+    resulting in the image of $\phi$ being given by 
+    \[
+        u+2v+w, v^2+\frac{2}{3}vw-\frac{1}{9}v+\frac{1}{9}w^2.    
+    \]
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{5.1.4}
+    
+    \bigskip
+    \textbf{(5.1.4a):}
+    We begin by defining the mapping $\pi^{-1}(a,b)$ as 
+    \[
+        x=a, y=b, (z^2-(a^2+b^2-1)(4-a^2-b^2))=0.    
+    \]
+    It follows from this mapping that, given $(a,b) \in \R^2$, 
+    there exists at most two points in the set.
+    
+    \bigskip
+    \textbf{(5.1.4b):}
+    Solving the third equation in Exercise 5.1.4a for $z$ gives 
+    \[
+        z = \pm \sqrt{(a^2+b^2-1)(4-a^2-b^2)}.    
+    \]
+    When $a^2+b^2 < 1$ or $a^2+b^2 > 4$, this equation gives zero 
+    points in the reals since the result is a complex number. 
+    When $a^2+b^2 = 1$ or $a^2+b^2 = 4$, we have one point since 
+    $z = 0$. When $1 < a^2+b^2 < 4$, we have two points.
+    
+    \bigskip
+    \textbf{(5.1.4c):}
+    V can be described as a torus with an inner radius of 1 and 
+    an outer radius of 4 that lies parallel to the xy-plane.
+
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise}{5.1.8}
+
+    \bigskip
+    \textbf{(5.1.8a):}
+    Choose $q = (0,1,1)$ in $V$ such that $f(q) = 1^2+1^3 \neq 0$.
+    Similarly, choose $r = (2,0,0)$ in $V$ such that $g(r) = 2^2-2 \neq 0$.
+    Hence, neither $f$ nor $g$ is identically zero on $V$.
+
+    Note that 
+    \[
+        fg = (y^2+z^3)(x^2-x)=x^2y^2-xy^2+x^2z^3-xz^3=(xy)^2-xy^2+x^2z^3-xz^3 \in \langle xy, xz \rangle.    
+    \]
+    Thus, $fg$ vanishes identically on $V$.
+
+    \bigskip
+    \textbf{(5.1.8b):}
+    Observe that 
+    \begin{align*}
+        V_1 = V\cap \mathbf{V}(f) = \mathbf{V}(xy,xz,y^2+z^3) = \{(0,y,-y^{\frac{2}{3}}) \vert y \in \R\}\cup \{(x,0,0) \vert x \in \R\}\\
+        V_2 = V\cap \mathbf{V}(g) = \mathbf{V}(xy,xz,x^2-x) = \{(0,y,z) \vert y,z \in \R\} \cup \{(1,0,0)\}.
+    \end{align*}
+    Using Lemma 1.1.2, we have that 
+    $\mathbf{V}(fg) = \mathbf{V}(f) \cup \mathbf{V}(g)$. Thus, using the fact 
+    that $fg$ vanishes identically on $V$, we let $V = V \cap \mathbf{V}(fg)$ 
+    and have that
+    \[
+        V = V \cap \mathbf{V}(fg) = V \cap (\mathbf{V}(f) \cup \mathbf{V}(g)) = (V\cap \mathbf{V}(f)) \cup (V \cap \mathbf{V}(g)) = V_1 \cup V_2.  
+    \]
+
+
+\end{exercise}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------------
+% Don't change anything below here
+%---------------------------------
+
+\end{document}
