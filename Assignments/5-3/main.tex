@@ -38,24 +38,117 @@ Rootfinding Research Prerequisites\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{5.3.2}
-
+    \begin{proof}
+        We have that $\overline{f\cdot g}^G=\overline{\overline{f}^G\overline{g}^G}^G$,
+        so the remainders of $f$ and $g$ do not need to be computed 
+        separately. Instead, for $[f] \cdot [g] \in k[x_1,\ldots,x_n]/I$,
+        $\overline{f\cdot g}^G$ can be computed.
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{5.3.3}
-
+    We can compute a Grobner basis of $I$ with lex order $x>y>z$ 
+    as 
+    \[
+        x^2-z^{55},xz^6-z^{64}, y^3-z^{54},yz^6-z^{24},z^{67}-z^6,
+    \]
+    and a basis with grlex order $x>y>z$ as 
+    \[
+        x^9-x^2y^2z^4,x^2y^7-x^2z^4,y^9-x^7,x^7y-x^2z^3,x^4y^4-x^2z^5,x^5z-y^6,z^6-x^4y,x^3z^2-y^3,y^3z-x^2.    
+    \]
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{5.3.4}
-
+    \begin{proof}
+        The case where $c=0$ is trivial. Let $c \in k$ be nonzero, 
+        and let $r=\overline{c\cdot f}^G$ be the unique remainder such 
+        that $cf=q+r$ for some $q \in I$. It follows that $r$ is a 
+        $k$-linear combination of the monomials in the complement of 
+        $\langle$LT$(I)\rangle$. We then divide by $c$ to get $f=\frac{q}{c}+\frac{r}{c}$.
+        We have $\frac{q}{c} \in I$ since $c \in k$, and the monomials 
+        in $\frac{r}{c}$ are identical as the monomials in $r$. By 
+        Proposition 5.3.1, $\frac{r}{c}=\overline{f}^G$, so $\overline{c\cdot f}^G = c \cdot \overline{f}^G$.
+    \end{proof}
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{5.3.5}
+
+    \bigskip
+    \textbf{(5.3.5a):}
+    Let $I$ be defined as in the text, and let $f \in \R[x,y]/I$ 
+    be arbitrary. Using Proposition 5.3.4, we have that 
+    \[
+        [f] = c_1[1]+c_2[x]+c_3[y]+c_4[y^2]    
+    \]
+    is a unique representation of $f$ with $c_i \in \R$. Note 
+    that the mapping $\phi([f])=(c_1,c_2,c_3,c_4)^T$ is injective 
+    between $\R[x,y]/I$ and $\R^4.$
+
+    Let $c \in \R$ and let 
+    \[
+        [g]=d_1[1]+d_2[x]+d_3[y]+d_4[y^2] \in \R[x,y]/I.    
+    \]
+    Then 
+    \begin{align*}
+        \phi([f]+[g])   &= \phi((c_1+d_1)[1]+(c_2+d_2)[x]+(c_3+d_3)[y]+(c_4+d_4)[y^2])\\
+                        &=(c_1+d_1,c_2+d_2,c_3+d_3,c_4+d_4)^T=(c_1,c_2,c_3,c_4)^T+(d_1,d_2,d_3,d_4)^T\\
+                        &=\phi([f])+\phi([g]),
+    \end{align*}
+    and 
+    \begin{align*}
+        \phi(c[f])  &= \phi(cc_1[1]+cc_2[x]+cc_3[y]+cc_4[y^2])=(cc_1,cc_2,cc_3,cc_4)^T=c(c_1,c_2,c_3,c_4)^T\\
+                    &=c\phi([f]).
+    \end{align*}
+    Thus, by definition, $\phi$ is a linear map, and we conclude that 
+    $\R[x,y]/I \simeq \R^4$ by $\phi$.
+
+    \bigskip
+    \textbf{(5.3.5b):}
+    Using the given Grobner basis, we express each product as a 
+    linear combination of $\{[1],[x],[y],[y^2]\}$ as follows:
+    \begin{align*}
+        x\cdot x    &=1\cdot(x^2+y-1)-y+1 \Rightarrow [x]\cdot[x]=-[y]+[1],\\
+        x\cdot y    &=1\cdot(xy-2y^2+2y)+2y^2-2y \Rightarrow [x]\cdot[y]=2[y^2]-2[y],\\
+        x\cdot y^2  &=y(xy-2y^2+2y)+2(y^3-(7/4)y^2+(3/4)y)+(3/2)y^2-(3/2)y\\
+                    & \Rightarrow [x]\cdot[y^2]=(3/2)[y^2]-(3/2)[y],\\
+        y\cdot y^2  &=1\cdot(y^3-(7/4)y^2+(3/4)y)+(7/4)y^2-(3/4)y \Rightarrow [y]\cdot[y^2]=(7/4)[y^2]-(3/4)[y]\\
+        y^2 \cdot y^2 &= (y+7/4)(y^3-(7/4)y^2+(3/4)y)+(37/16)y^2-(21/16)y\\
+                    & \Rightarrow [y^2]\cdot[y^2]=(37/16)[y^2]-(21/16)[y].
+    \end{align*}
+
+    \bigskip
+    \textbf{(5.3.5c):}
+    $\R[x,y]/I$ is not a field since 
+    \[
+        ([x]-2[y]+2)\cdot[y] = [xy-2y^2+2y]=0
+    \]
+    so $[y]$ is a nonzero divisor in $\R[x,y]$.
+
+    \bigskip
+    \textbf{(5.3.5d):}
+    We factor and solve the last equation in the Grobner basis $G$, 
+    which results in 
+    \[
+        \frac{1}{4}\cdot y(4y^2-7y+3)=\frac{1}{4}\cdot y(y-1)(4y-3)=0     
+    \]
+    so $y = 0,1,\frac{4}{3}$. Back-substituting into the first two 
+    equations of $G$ and have that 
+    \[
+        \mathbf{V}(I)=\{(0,1),(0,-1),(1,0),(\frac{3}{4},-\frac{1}{2})\}.
+    \]
+
+    \bigskip
+    \textbf{(5.3.5e):}
+    Part $(ii)$ of Proposition 7 gives that $\mathbf{V}(I)$ has 
+    at most $6$ points. Part $(i)$ of the proposition gives a 
+    better bound since $\R[x,y]/I$ is of dimension $4$ so it 
+    gives a bound of $4$.
 
 \end{exercise}
 
@@ -63,11 +156,96 @@ Rootfinding Research Prerequisites\\
 
 \begin{exercise}{5.3.7}
 
+    \bigskip
+    \textbf{(5.3.7a):}
+    If $\{x^\alpha \vert x^\alpha \not \in \langle$LT$(I)\rangle\}$ contains 
+    $d$ elements $x^{\alpha_1},\ldots,c^{\alpha_2}$, Proposition 4 
+    gives that $k[x_1,\ldots,x_n]/I$ is a $k$-vector space that 
+    is isomorphic to $S =$Span$(x^{alpha_1},\ldots,x^{alpha_2})$. 
+    Since each $\alpha_i$ is distinct, it follows that all $x^{\alpha_1}$ 
+    are linearly independent, so $S$ has dimension $d$. Because $S$ 
+    is isomorphic to $k[x_1,\ldots,x_n]/I$, it follows that $k[x_1,\ldots,x_n]/I$ 
+    is also of dimension $d$.
+
+    \bigskip
+    \textbf{(5.3.7b):}
+    We conclude that the number of monomials in the complement of $\langle$LT$(I)\rangle$ 
+    is independent of the choice of monomial order when that number 
+    is finite since Proposition 4 and Exercise 5.3.7a are independent 
+    of the choice of monomial order.
+
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{5.3.11}
+
+    \bigskip
+    \textbf{(5.3.11a):}
+    We compute a Grobner basis for $I$ with lex order $x>y>z$ as 
+    \[
+        x_z+3z^2+z^4-z^5,y+3z+6z^2+2z^3+z^4-2z^5, -z-3z^2-3z^3-z^4+z^6.
+    \]
+    Using Theorem 5.3.6, we give the table of monomials $m_d$ of 
+    total degree $\leq d$ that are not in $\langle$LT$(I)\rangle$ 
+    with $1\leq d\leq 10$:
+
+    \begin{tabular}{l|l|l}
+        $d$ & $m_d$ & monomial set $M_d$\\
+        \hline
+        1&2&$\{1,z\}$\\
+        2&3&$\{1,z,z^2\}$\\
+        3&4&$\{1,z,z^2,z^3\}$\\
+        4&5&$\{1,z,z^2,z^3,z^4\}$\\
+        $\geq5$&6&$\{1,z,z^2,z^3,z^4,z^5\}$
+    \end{tabular}
+
+    \bigskip
+    \textbf{(5.3.11b):}
+    Similarly to part (a), we compute a Grobner basis 
+    \[
+        x-y^2+z^2,y^4-2y^2z^2+y+z^4    
+    \]
+    and form a table of values:
+
+    \begin{tabular}{l|l|l}
+        $d$&$m_d$&monomial set $M_d$\\
+        \hline
+        1&3&$\{1,y,z\}$\\
+        2&6&$\{1,y,z,yz,y^2,z^2\}$\\
+        3&10&$\{1,y,z,yz,y^2,z^2,y^2z,yz^2,y^3,z^3\}$\\
+        4&14&$\{1,y,z,yz,y^2,z^2,y^2z,yz^2,y^3,z^3,yz^3,y^2z^2,y^3z,z^4\}$\\
+        5&6&$\{1,y,z,yz,y^2,z^2,y^2z,yz^2,y^3,z^3,yz^3,y^2z^2,y^3z,z^4,y^3z^2,y^2z^3,yz^4,z^5\}$\\
+        6&22&$\{1,y,z,yz,y^2,z^2,y^2z,yz^2,y^3,z^3,yz^3,y^2z^2,y^3z,z^4,y^3z^2,y^2z^3,yz^4,z^5y^3z^3,y^2z^4,yz^5,z^6\}$\\
+        7&26&$\{1,y,z,yz,y^2,z^2,y^2z,yz^2,y^3,z^3,yz^3,y^2z^2,y^3z,z^4,y^3z^2,y^2z^3,yz^4,z^5y^3z^3,y^2z^4,yz^5,z^6,$\\
+        & &$y^3z^4,y^2z^5,yz^6,z^7\}$\\
+        $\geq8$&$4d-2$&$M_d=M_{d-1}\cup \{y^3z^{d-3},y^2z^{d-2},yz^{d-1},z^d\}$
+    \end{tabular}
+
+    \bigskip
+    \textbf{(5.3.11c):}
+    This is given ad $H(d)=4d-2$ by Exercise 5.3.11b, so $H(d)$ is 
+    linear.
+
+    \bigskip
+    \textbf{(6.3.11d):}
+    We compute a Grobner basis $x^2+y$ and form a table of values:
+
+    \begin{tabular}{l|l|l}
+        $d$&$m_d$&monomial set $M_d$\\
+        \hline
+        1&4&$\{1,x,y,z\}$\\
+        2&9&$\{1,x,y,z,xy,xz,yz,y^2,z^2\}$\\
+        3&16&$\{1,x,y,z,xy,xz,yz,y^2,z^2,xy^2,xyz,xz^2,y^3,y^2z,yz^2,z^3\}$\\
+        $\geq4$&$(d+1)^2$&$M_d=m_{d-1}\cup \{xy^iz^k \vert i+k=d-1\}\cup \{y^mz^n\vert m+n=d\}$
+    \end{tabular}
+
+    \bigskip
+    \textbf{(5.3.11e):}
+    It appears that dimension corresponds to the degree of the 
+    function $H(d)$, or in other words, each equation in the 
+    definition of a variety imposes an additional constraint that 
+    reduces the possible dimension by one.
 
 \end{exercise}
 
