@@ -38,30 +38,149 @@ Rootfinding Research Prerequisites\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{5.4.2}
+    
+    \bigskip
+    \textbf{(5.4.2a):}
+    Let $V$ be defined as in the text, and let $\phi=[f], f\in \C[x_1,\ldots,x_n]$.
+    It follows that 
+    \[
+        \mathbf{V}_V(\phi)=\{(x_1,\ldots,x_n) \in V \vert \phi(x_1,\ldots,x_n)=0\}=\mathbf{V}(f_1,\ldots,f_s,f)
+    \]
+    for $f_1,\ldots,f_s \in V$. We then have 
+    \begin{align*}
+        \mathbf{V}_V(\phi)=0    &\Leftrightarrow \langle f_1,\ldots,f_s,f\rangle = \C[x_1,\ldots,x_n] && \text{Weak Nullstellensatz}\\
+                                &\Leftrightarrow h_1f_1+\ldots+h_sf_s+hf=1&&\text{for some }h_1,\ldots,h_s,h \in \C[x_1,\ldots,x_n]\\
+                                &\Leftrightarrow [h]\phi = [1] \in \C[V]&&\text{since }[h_1f_1+\ldots+h_sf_s]=[0] \in \C[V]\\
+                                &\Leftrightarrow \phi \text{ is invertible in }\C[V].
+    \end{align*}
+    
+    \bigskip
+    \textbf{(5.4.2b):}
+    The statement above is not true over $\R$ as can be seen by the 
+    counterexample $V=\mathbf{V}(y) \subseteq \R^2, \phi=x^2+1$. It 
+    follows that $\mathbf{V}_V(\phi)=\emptyset$ since $\phi$ has no root in 
+    $\R^2$. 
+    
+    It is also true that $\phi$ is not invertible in $\R[V]$. 
+    Supposing that this is not the case, there exists some $\psi=[g] \in \R[V]$ 
+    such that $\psi\phi=[1]$. By proposition 5.1.2, this implies that 
+    $(x^2+1)\cdot g(x,y)-1 = h(x,y) \cdot y$ for some $h(x,y)\in \R[x,y]$. 
+    This is equivalent to saying that $(x^2+1)\cdot g(x,0)=1$, which is 
+    impossible since $g(x,0)$ is a polynomial in $\R[x]$. Therefore, 
+    $\phi$ is not invertible in $\R[V]$.
 
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{5.4.4}
-
+    Let $V$ be as defined in the text, and define the mappings 
+    $\alpha:k\to V, \beta:V\to k$ as $\alpha(x)=(x,x^n,x^m)$ and 
+    $\beta(x,y,z)=x$, respectively. We take their compositions and
+    have that 
+    \begin{align*}
+        (\alpha \circ \beta)(x,y,z)&=\alpha(x)=(x,x^n,x^m)=(x,y,z), (x,y,z)\in V,\\
+        (\beta \circ \alpha)(x) &= \beta(x,x^n,x^m)=x.
+    \end{align*}
+    Therefore $\alpha \circ \beta = id_V$ and $\beta \circ \alpha = id_k$,
+    so $V$ is isomorphic as a variety to $k$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{5.4.5}
-
+    The processes are similar enough that we demonstrate only 
+    that the surface $V \in k^3$ defined by $x-f(y,z)=0$ is 
+    isomorphic as a variety to $k^2$. We do so by defining the 
+    polynomial mappings $\alpha:k^2\to V$ and $\beta:V\to k^2$ 
+    as $\alpha(y,z)=(f(y,z)y,z)$ and $\beta(x,y,z)=(y,z)$, respectively.
+    Taking the compositions yields
+    \begin{align*}
+        (\alpha \circ \beta)(x,y,z) &= \alpha(y,z)=(f(y,z),y,z)=(x,y,z), (x,y,z)\in V\\
+        (\beta \circ \alpha)(y,z) &= \beta(f(y,z),y,z)=(y,z).
+    \end{align*}
+    Therefore $\alpha \circ \beta = id_V$ and $\beta \circ \alpha = id_{k^2}$,
+    so it follows that $V$ is isomorphic as a variety to $k^2$.
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{5.4.8}
+    
+    \bigskip
+    \textbf{(5.4.8a):}
+    Let $Q_1$ and $Q_2$ be as in the text. The pencil of surfaces 
+    determined by $Q_1$ and $Q_2$ is given by 
+    \[
+        \{Q_2\}\cup\{F_c=\mathbf{V}(f_1+cf_2)\vert c\in R\}.    
+    \]
+    Fixing $c=-1$ constrains $F_{-1}$ to be 
+    \[
+        0=(x^2+y^2+z^2-1)-(x^2-x+\frac{1}{4}-3y^2-2z^2) = x+4y^2+3z^3-\frac{5}{4}   
+    \]
+    Using Exercise 5.4.5, the surface $Q=F_{-1}=\mathbf{V}(x+4y^2+3z^3-\frac{5}{4})$
+    is isomorphic as a variety to $\R^2$.
+    
+    \bigskip
+    \textbf{(5.4.8b):}
+    $Q_1$ is the unit sphere and $Q_2$ is a cone with its vertex 
+    at $(\frac{1}{2},0,0)$. Thus, their intersections are two 
+    ellipses in planes parallel to the $(y,z)$-plane.
 
 \end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{exercise}{5.4.11}
+    
+    \bigskip
+    \textbf{(5.4.11a):}
+    To begin, we show that 
+    $\mathbf{I}(\mathbf{V}(z-x^2-y^2)) = \langle z-x^2-y^2 \rangle$. 
+    Let $f \in \mathbf{I}(\mathbf{V}(z-x^2-y^2))$ and divide it by 
+    $z-x^2-y^2$ using lex order $z>x>y$. The result is that 
+    $f=q(x,y,z)(z-x^2+y^2)+r(x,y)$. We can now substitute $x^2+y^2$ 
+    for $z$ and have $r(x,y) = 0$. Since $\R$ is an infinite field, 
+    $r(x,y)$ must be the zero polynomial, so $f \in \langle z-x^2-y^2 \rangle$.
+    The other inclusion is obvious by observation, so we have that 
+    $\mathbf{I}(\mathbf{V}(z-x^2-y^2))=\langle z-x^2-y^2\rangle$.
+
+    Next, we let $V=\mathbf{V}(z-x^2-y^2)$. Then $\mathbf{V}_V([x-1],[y-1])$ 
+    consists of the points in $V$ such that $x-1 \in \mathbf{I}(V)$ 
+    and $y-1 \in \mathbf{I}(V)$. Note that $x-1,y-1$ are not divisible 
+    by $z-x^2-y^2$, so it must be that $x=1,y=1$ and $z=1^2+1^2=2$. 
+    Therefore $W=\{(1,1,2)\} = \mathbf{V}_V([x-1],[y-1])$. Using 
+    Proposition 3.3, we have $\langle [x-1],[y-1] \rangle \subseteq \mathbf{I}_V(\mathbf{V}_V([x-1],[y-1]))=\mathbf{I}_V(W)$.
+    
+    \bigskip
+    \textbf{(5.4.11b):}
+    Define the mappings $\alpha:V\to \R^2$ and $\beta:\R^2\to V$ by 
+    $\alpha(x,y,z)=(x,y)$ and $\beta(x,y)=(x,y,x^2+y^2)$, respectively.
+    Then the compositions
+    \begin{align*}
+        (\alpha \circ \beta)(x,y) = \alpha(x,y,x^2+y^2)=(x,y),\\
+        (\beta \circ \alpha)(x,y,z) = \beta(x,y)=(x,y,x^2+y^2)=(x,y,z), (x,y,z) \in V
+    \end{align*}
+    imply that $V$ is isomorphic as a variety to $\R^2$. Furthermore, 
+    let $I=\mathbf{I}_V(W)\subseteq \R[V]$ and note that $W = \mathbf{V}_V(I)$
+    by Proposition 5.5.3. Using Exercise 5.5.9 as per the given hint,
+    we have $\alpha(W) = \mathbf{V}(\beta^*(I)),$ such that 
+    $\beta^*(I) \subseteq \mathbf{I}(\alpha(W))$. Note that 
+    $W=\{(1,1,2)\}$, so $\alpha(W) = \{(1,1)\}$, which yields 
+    $\beta^*(I) \subseteq \mathbf{I}(\alpha(W))=\mathbf{I}(\{1,1\})=\langle x-1, y-1 \rangle$.
+
+    Finally, since $\alpha^*:\R[x,y]\to\R[V]$ is a ring isomorphism 
+    with an inverse $\beta^*$, there exists an injective, inclusion-preserving 
+    correspondence between ideals of $\R[x,y]$ and $\R[V]$. Observe 
+    that $\langle x-1, y-1 \rangle$ is the smallest ideal of 
+    $\R[x,y]$ containing $x-1,y-1$, it follows that $\alpha^*(\langle x-1,y-1\rangle)$ 
+    is the smallest ideal of $\R[V]$ which contains $\alpha^*(x-1)=[x-1]$ and 
+    $\alpha^*(y-1)=[y-1].$ Thus $\alpha^*(\langle x-1,y-1\rangle)= \langle[x-1],[y-1]\rangle$,
+    which implies 
+    \[
+        \mathbf{I}_V(W)=I=\alpha^*(\beta^*(I))\subseteq \alpha^*(\langle x-1, y-1\rangle)=\langle[x-1],[y-1]\rangle.    
+    \]
+    Therefore, we can conclude that $\langle[x-1],[y-1] \rangle=\mathbf{I}_V(W)$.
 
 \end{exercise}
 
